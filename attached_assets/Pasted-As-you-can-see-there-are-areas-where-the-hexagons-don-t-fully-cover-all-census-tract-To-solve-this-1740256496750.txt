@@ -1,0 +1,48 @@
+As you can see, there are areas where the hexagons don’t fully cover all census tract. To solve this problem, we need to get the indexes of a bigger aperture and them convert it to a smaller aperture. The aperture controls the resolution of the hexagons. We can think of it as being the scale or, in other words, the size of the hexagon. Bigger aperture means smaller hexagons.
+With the hexagons constructed, we have to aggregate census tract data to the hexagons dataframe. To calculate total population that lives in a hexagon we have to sum the population of all census tract that are within it. However, as we can see on the images above, some census tracts intersects more than one hexagon. In those cases, I considered a portion of the data stored in the census tract according to the proportion of the area inside each hexagon.
+# Calculating the area of each census tract
+df_census_tract['area_census_tract'] = (
+    df_census_tract
+    .to_crs(crs=3857)
+    .area
+    )
+
+# Overlaying census tracts that intersects each hexagon
+df_agg = (
+    df_hex
+    .to_crs(crs=3857)
+    .overlay(df_census_tract.to_crs(crs=3857))
+    )
+
+# Calculating the area of overlayed cencus tract
+df_agg['area_overlayed'] = df_agg.area
+
+# Calculating the proportion of the area for each overlayed tract
+df_agg['area_prop'] = df_agg['area_overlayed'] / df_agg['area_census_tract']
+
+
+# Calculating pop_count, total_monthly_income and housing_count proportional to the area inside the hexagons
+df_agg = (
+    df_agg
+    .assign(prop_pop_count=lambda x: round(x['pop_count'] * x['area_prop']))
+    .assign(prop_total_monthly_income=lambda x: round(x['total_monthly_income'] * x['area_prop']))
+    .assign(prop_housing_count=lambda x: round(x['housing_count'] * x['area_prop']))
+    )
+
+# Aggregating census tract and summing the proportion variables
+df_agg = (
+    df_agg[[
+    'hex8', 'prop_pop_count', 'prop_total_monthly_income', 'prop_housing_count'
+    ]]
+    .groupby(['hex8'])
+    .sum()
+    .reset_index()
+    )
+
+# Creating Hexagon polygons based on Hexagons indexes
+df_agg['hex_polygon'] = df_agg['hex8'].apply(lambda x: Polygon(h3.h3_to_geo_boundary(x, geo_json=True)))
+
+# Setting GeoDataFrame Geometry
+df_agg = gpd.GeoDataFrame(df_agg, crs=df_census_tract.crs, geometry='hex_polygon') 
+
+df_agg.head()

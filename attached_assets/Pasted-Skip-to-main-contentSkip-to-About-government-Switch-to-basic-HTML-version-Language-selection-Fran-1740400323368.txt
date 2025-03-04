@@ -1,0 +1,392 @@
+Skip to main contentSkip to "About government"Switch to basic HTML version
+Language selection
+Français
+Government of Canada/ Gouvernement du Canada
+You are here:
+Canada.ca  How government works  Policies, directives, standards and guidelines  Rescinded [2012-11-19] - Directive on the Use of Official Languages on Web Sites
+Rescinded [2012-11-19] - Directive on the Use of Official Languages on Web Sites
+This page has been archived on the Web
+Information identified as archived is provided for reference, research or recordkeeping purposes. It is not subject to the Government of Canada Web Standards and has not been altered or updated since it was archived. Please contact us to request a format other than those available.
+
+Archived
+This page has been archived on the Web.
+
+Effective date
+This directive comes into effect on July 15, 2005. This directive and the Directive on the Use of Official Languages in Electronic Communications replace the following policy:
+
+Policy on using the Official Languages on Electronic Networks
+Directive statement
+A Web site of an institution respects the institution's linguistic obligations regarding communications with and services to the public, as well as language of work. It reflects the equality of status of English and French. The English and French versions of a Web site of an institution are of equal quality and are available simultaneously. Subject to the requirements set out in this directive, a Web site may be in one or both official languages.
+
+Application
+This directive applies to all institutions subject to Parts IV or V of the Official Languages Act (OLA), with the exception of the Senate, the House of Commons, the Library of Parliament, the Office of the Senate Ethics Officer and the Office of the Ethics Commissioner.
+
+Related policies
+The institutions in question must also apply the following policies:
+
+Policy on the Use of Official Languages for Communications with and Services to the Public - for institutions subject to Part IV of the Official Languages Act.
+Policy on Language of Work - for institutions subject to Part V of the Official Languages Act.
+Institutions must also respect the official languages obligations set out in the list of related policy instruments.
+
+Requirements
+Accountability
+Deputy heads are accountable for implementing this directive in their institutions.
+
+Expected results
+Communications with and services to the public
+The institution respects its linguistic obligations when it uses a Web site to communicate with and to serve the public.
+
+Obligations of an office or facility designated bilingual
+An office or facility designated bilingual respects the public's right to communicate with and receive services in the official language of the public's choice, in accordance with the requirements set out in the Policy on the Use of Official Languages for Communications with and Services to the Public. The office or facility's Web site is available simultaneously in both official languages.
+
+An office or facility designated bilingual ensures that a third party acting on its behalf respects the public's language rights. The contract or agreement with a third party includes clauses setting out the office or facility's linguistic obligations with which the third party must comply. The office or facility designated bilingual ensures that the two official languages are of equal quality when a third party provides communications and services on its behalf.
+
+An office or facility designated bilingual that posts information on a Web site of an entity not subject to the OLA ensures that:
+
+the office or facility's information is in both official languages; and
+a notice precedes the information to indicate clearly that the information originates from that office or facility.
+If the office or facility enters into a collaborative agreement with an entity not subject to the OLA concerning such a site, the agreement includes clauses setting out the linguistic obligations of the parties involved.
+
+Special circumstances
+Under certain conditions, an office or facility designated bilingual may, as a courtesy, make available to the public on its Web site:
+
+information in one official language only, without changing the content, when that information is provided by entities not subject to the OLA;
+comments from the public in the language in which the comments were received, provided that no changes are made and that no feedback is requested on those comments;
+a hyperlink to a unilingual Web site of an entity not subject to the OLA. In that case, the office or facility is not responsible for the fact that the content of that site is not in both official languages.
+The office or facility posts a notice explaining that the information is not available in both official languages because the source of the information is not subject to the OLA.
+
+The circumstances set out above do not exempt the institution from its obligation to serve the public in both official languages.
+
+Obligations of a unilingual office or facility
+A Web site of a unilingual office or facility is available in the official language of the majority of the population of the province or territory where the office or facility is located only when the content of the site is intended exclusively for the public served by that office or facility.
+
+The unilingual office or facility may post information in only one official language on the site of an entity not subject to the OLA. Such information is clearly identified and a bilingual message indicates that the information is in only one official language because it is intended exclusively for the public served by that office or facility.
+
+A third party communicates with or serves the public on behalf of a unilingual office or facility by means of this office or facility's Web site in the official language of the majority of the population of the province or territory where the office or facility is located only if the content of the Web site of the unilingual office or facility is intended exclusively for the public served by that office or facility.
+
+Language of work
+Obligations related to a Web site intended for employees located in regions designated as bilingual for language-of-work purposes
+It is the institution's responsibility to create and maintain a work environment conducive to the effective use of both official languages by enabling its staff to use either language. The institution respects the right of employees to work and to communicate with it in the official language of their choice, in accordance with the requirements set out in the Policy on Language of Work. The institution ensures that communications with and services to employees delivered by means of a Web site are in both official languages simultaneously, regardless of the entity to which this responsibility is given.
+
+Special circumstances
+Under certain conditions, the institution may, as a courtesy, make available to employees on its Web site:
+
+information in one official language only, without changing the content, when that information is provided by entities not subject to the OLA;
+comments from employees in the language in which the comments were received, provided that no changes are made and that no feedback is requested on those comments;
+a hyperlink to a unilingual Web site of an entity not subject to the OLA. In that case, the institution is not responsible for the fact that the content of that site is not in both official languages.
+The institution posts a notice explaining that the information is not available in both official languages because the source of the information is not subject to the OLA.
+
+A controlled-access site accessible only to employees may be in only one official language when:
+
+the site is accessible only to employees working in one or more unilingual regions for language-of-work purposes, where the language of work is the same. Therefore, the site is in that official language.
+the site is accessible only to employees working in one or more regions designated as bilingual for language-of-work purposes, and they have all individually identified in an objective manner a preference for the same official language. Therefore, the site is in that official language.
+Documents produced by the employees who use the site are subject to all relevant official languages obligations if they are disseminated off the site.
+
+The circumstances set out above do not exempt the institution from its obligation to communicate with employees in both official languages.
+
+Obligations related to a Web site intended for employees located in unilingual regions for language-of-work purposes
+A Web site of an institution is available in the official language that predominates in the province or territory where the employees are located when the content of the site is intended exclusively for them.
+
+The institution may provide access to bilingual work instruments or services to its employees located in unilingual regions for language-of-work purposes by means of a Web site. However, in doing so, the treatment of the two official languages must be comparable between regions where one language or the other predominates.
+
+Service providers acting on behalf of an institution communicate with and provide services to employees in unilingual regions for language-of-work purposes by means of a Web site in the official language that predominates in the province or territory where the employees are located.
+
+Obligations related to a Web site intended for the public and employees
+A controlled-access site accessible to members of the public and to employees may be in only one official language if it meets all of the following three conditions:
+
+the site belongs to a unilingual office or facility;
+the site is accessible only to employees located in one or more unilingual regions for language-of-work purposes where the language of work is the same;
+the language of the majority of the population of the province or territory served by the office or facility and the language of work of the unilingual region are the same.
+Therefore, the site is in that language.
+
+Implementation procedures
+Procedures related to Web sites required to be in both official languages
+The institutional signature appears in both official languages on the welcome page.
+The domain name of the welcome page:
+includes elements or acronyms in English and in French that appear in the prescribed order; or
+is a term with the same meaning and spelling in both official languages.
+The greeting or other introductory text appears on the welcome page in both official languages in the prescribed order and navigation links marked "English" and "Français" are provided so that users can choose the official language in which to access content.
+Within the site, each page includes a navigation link marked "English" or "Français" that enables users to access the equivalent page in the other official language.
+The values of metadata elements and attributes for any given Web page are expressed in the official language(s) used on the page. Optionally, other languages may also be used. This requirement does not apply to element names, attribute names or any values expressed as standardized codes.
+An office or facility of an institution that posts information or whose information is posted on a site on its behalf ensures that:
+the English and French versions are posted simultaneously;
+the texts are of equal quality in both official languages;
+any change made in one version is simultaneously reflected in the other version;
+the encoding schemes and pathways support the use of diacritics. Clear information is posted on the site concerning the encoding schemes used for files or documents containing diacritics. The use of all the necessary diacritics is an essential criterion when evaluating the quality of both official languages.
+Information for employees that is required to be in both official languages includes among others:
+documentation and regularly and widely used work instruments intended for employees located in regions designated as bilingual for language-of-work purposes;
+information provided by management to all employees.
+An office or facility of an institution that provides a hyperlink to a unilingual site clearly informs users that the content of the site is not available in both official languages.
+An office or facility of an institution that posts, on a site, information intended exclusively for employees located in a unilingual region for language-of-work purposes clearly indicates in both official languages that this information is intended for these employees only.
+The text equivalents and other non-textual elements used to describe the purpose and functions of images and graphics displayed on a page of a Web site are in the language of that page.
+Server messages are in the language of the page consulted on a Web site or, if the technology cannot offer a language choice for server messages, the messages are in both official languages.
+Procedures related to Web sites not required to be in both official languages
+The institutional signature appears in both official languages on the welcome page.
+The welcome page includes a bilingual message indicating that, under the OLA, the site provides information in one official language only. This message also informs users of a hyperlink to another site of the same institution that provides general information in both official languages.
+If the welcome page of a unilingual site contains a navigation link, the link is labelled with a term such as "Content" or "Access" and not with the name of the official language of the office or facility using the site (i.e., "English" or "Français").
+The greeting and other introductory text appearing on the welcome page are in the official language of the site.
+When documentation and regularly and widely used work instruments are posted on a Web site, they are in both official languages when they are intended for employees located in unilingual regions for language-of-work purposes who provide bilingual services.
+Procedures related to multilingual Web sites
+If a Web site is required to be in both official languages and other languages are used on that site in addition to English and French:
+
+the information is at a minimum in both official languages;
+the equality of status of English and French is respected; and
+each page in a language that is not one of the two official languages has navigation links marked "English" and "Français" that provide users with access to the equivalent pages in each of the two official languages.
+Monitoring and reporting
+The Public Service Human Resources Management Agency of Canada (PSHRMAC) is responsible for determining the method for assessing performance and monitoring implementation of this directive in institutions.
+
+Each institution is responsible for keeping its records and information systems up to date and assessing results in order to report on them to the PSHRMAC on request. At a minimum, the institution assesses the following:
+
+effectiveness of measures in place to ensure that a Web site of an office or facility designated bilingual is available simultaneously in both official languages;
+effectiveness of measures in place to ensure that a Web site intended for employees located in regions designated as bilingual for language-of-work purposes is available simultaneously in both official languages;
+effectiveness of measures in place to ensure that a third party acting on behalf of an office or facility designated bilingual respects the linguistic obligations of that office or facility;
+effectiveness of measures in place to ensure that a controlled-access site respects the obligations set out in this directive;
+number of complaints concerning the use of both official languages on Web sites that the Office of the Commissioner of Official Languages determined to be founded.
+When assessment of the results reveals that the directive has not been respected, the institution reports the situation to the PSHRMAC and takes appropriate corrective action.
+
+Consequences
+Enquiries
+For further information, please contact the person responsible for official languages in your institution.
+
+Definitions and notes for the reader
+A
+A bilingual message indicates that the information is in only one official language: This message also informs users of a hyperlink to a site where they can access general information about the institution in both official languages.
+
+For example:
+
+Under the Official Languages Act, this office provides services to the public in English only. You will find general information in both official languages on (insert hyperlink here).
+
+Aux termes de la Loi sur les langues officielles, ce bureau n'offre des services au public qu'en anglais. Vous trouverez des renseignements généraux dans les deux langues officielles au (insérer l'hyperlien ici).
+
+C
+Clearly informs: A bilingual exit notice is needed to indicate to the user that the hyperlink leads to a site that is not required to be in both official languages.
+
+For example:
+
+This link leads to a site belonging to an entity not subject to the Official Languages Act. Information on this site is available in the language of the site.
+
+Ce lien conduit à un site d'une entité non assujettie à la Loi sur les langues officielles. L'information sur ce site est disponible dans la langue du site.
+
+This link leads to the site of an office that, under the Official Languages Act, provides services to the public in English only. The information on this site is available in English only.
+
+Ce lien conduit à un site d'un bureau qui, aux termes de la Loi sur les langues officielles, n'offre des services au public qu'en anglais. L'information sur ce site est disponible en anglais seulement.
+
+Collaborative agreement: A collaborative agreement may be necessary in some situations, such as:
+
+co-management of a site by an institution subject to the Official Languages Act (OLA) and an entity not subject to it;
+posting of information belonging to an institution subject to the OLA on the site of an entity not subject to it; or
+if the institution subject to the OLA grants financial support for a site of an entity not subject to the OLA without the institution being present on the site.
+Institutions subject to the OLA that post information on the sites of entities not subject to the OLA comply with their linguistic obligations regarding communications with and services to the public for such information. This does not mean that the OLA applies to information that entities not subject to the OLA post on their sites, but the institution subject to the OLA ensures it enters into an agreement that takes account of its linguistic obligations and of requirements under other federal legislation or policies, including:
+
+Privacy Act: http://laws-lois.justice.gc.ca/eng/acts/P-21/text.html
+Communications Policy of the Government of Canada: http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=12316
+Federal Identity Program Policy (FIP):http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=12314
+Common Look and Feel for the Internet (CLF):http://www.tbs-sct.gc.ca/clf-nsi/index-eng.asp
+For example, the agreement would specify that the portion of the site that provides access to federal government information ensures an active offer of services and communications in both official languages in accordance with Part IV of the OLA and also complies with the official languages requirements of the FIP and the CLF.
+Conditions: For information to be posted in only one official language as a courtesy, the following three conditions must be met:
+
+the information comes from an institution not subject to the Official Languages Act (OLA) and is not produced on behalf of an institution subject to the OLA. The institution subject to the OLA ensures that a message clearly indicates that this information does not come from it. This could include, for example, information from other levels of government;
+it is not information given to employees of an institution subject to the OLA that constitutes a regularly and widely used work instrument or personal and central services;
+the information is not related to the responsibilities of the institution regarding communications with and services to the public or employees.
+Consequences: Official Languages Policy Framework
+http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=12515.
+
+Contract or agreement: When an office or facility of an institution subject to Part IV of the Official Languages Act entrusts a third party with delivery of its services to or communications with the public, it ensures that the third party complies with the linguistic obligations of the office or facility through a contract or other legal instrument. Contracts or agreements with third parties should not be confused with transfer payments (grants and contributions). For information related to transfer payments, please see http://www.tbs-sct.gc.ca/fm-gf/tools-outils/guides/ggcotp-gscapttb-eng.asp.
+
+Controlled-access site: A password-protected site to which access is restricted to a limited number of identifiable participants.
+
+D
+Deputy heads: This term is equivalent to "deputy minister", "chief executive officer" or some other title denoting this level of responsibility.
+
+Diacritics: A sign, e.g. an accent, diaeresis, cedilla, used to indicate different sounds or values of a letter.*
+
+* Source: The Canadian Oxford Dictionary, Second Edition, edited by Katherine Barber.
+Copyright © 2004 Oxford University Press. Reprinted by permission of Oxford University Press.
+
+Directive on the Use of Official Languages in Electronic Communications: Hyperlink to the Directive on the Use of Official Languages in Electronic Communications.
+
+Domain name: The highest reference level to a Web site. For example, the domain name for the Canada site is canada.gc.ca. The domain name is also the portion of an e-mail address to the right of the @ sign. The institution's signature appears in both official languages and in the order prescribed in Appendix A of the Federal Identity Program Policy, Appendix A.
+
+For institutions named in Schedules I, I.1 and II of the Financial Administration Acthttp://laws-lois.justice.gc.ca/eng/acts/F-11/, please consult the Common Look and Feel Standards and Guidelines for the Internet http://www.tbs-sct.gc.ca/clf-nsi/inter/inter-07-tb-eng.asp for all other obligations pertaining to the domain name.
+
+E
+Effective use: Actual, routine use of either official language in a work environment where employees can work in the official language of their choice.
+
+Encoding schemes: The representation of the information circulating in the network requires use of a particular code. Among other things, the scheme used must allow for the representation of characters specific to each of the two official languages.
+
+I
+Individually identified in an objective manner: The institution offers employees the opportunity to select their preferred official language of work. This can be done by:
+
+setting up a complete list of the employees who will have access to the site;
+individually contacting employees to ask their preferred official language of work. No attempt should be made to influence this choice, for example, by referring to the number or percentage of employees who have already chosen one language or the other.
+Institutional signature: The name of the institution. Consult Appendix A of the Federal Identity Program Policy, Appendix A (FIP) if your institution is named in Schedules I, I.1, II or III to the Financial Administration Act. The principles in Appendix A also apply to all sectors designated as departments for the purposes of the Act, including those institutions otherwise exempted from using FIP corporate symbols.
+
+Intended exclusively:
+
+For communications with and services to the public: the information is intended exclusively for the public served by the unilingual office or facility. If such is not the case, please note that:
+
+for communications with and services to the public:
+the office or facility identifies the target public in order to determine whether there is an obligation to provide the information in both official languages. If so, the institution ensures that the information is in both official languages;
+for its Web site, the office or facility chooses one of the following options:
+post the information on its unilingual site in only one official language and provide a bilingual message with a hyperlink indicating that the information is also available in both official languages on a bilingual Web site; or
+identify the target public in order to determine whether there is an obligation to provide the information in both official languages. If so, the institution posts that information in both official languages on the unilingual site. This does not mean that the entire Web site must be bilingual.
+For language of work: the information is intended exclusively for employees in one or more unilingual regions for language-of-work purposes where the language of work is the same. If such is not the case, please note that:
+
+for a Web site, the institution chooses one of the following options:
+post the information on a unilingual site in only one official language and provide a bilingual message with a hyperlink indicating that the information is also available in both official languages on a bilingual Web site; or
+identify the targeted employees in order to determine whether there is an obligation to provide the information in both official languages. If so, the institution posts that information in both official languages on the unilingual site. This does not mean that the entire Web site must be bilingual.
+for electronic communications:
+identify the targeted employees in order to determine whether there is an obligation to provide the information in both official languages. If so, the institution ensures that the information is in both official languages.
+L
+List of related policy instruments:
+
+Common Look and Feel Standards and Guidelines for the Internet (Part 7 - Official Languages) http://www.tbs-sct.gc.ca/clf-nsi/inter/inter-07-tb-eng.asp - for institutions named in Schedules I, I.1 and II to the Financial Administration Act http://laws-lois.justice.gc.ca/eng/acts/F-11/.
+Federal Identity Program Policy (FIP) - Appendix A http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=12314#Appendice A - Official Languages - for institutions named in Schedules I, I.1, II and III to the Financial Administration Act http://laws-lois.justice.gc.ca/eng/acts/F-11/.
+Policy on Alternative Service Delivery - Annex C http://www.tbs-sct.gc.ca/pubs_pol/opepubs/TB_B4/asd-dmps1-eng.asp#_Toc921243 - Official Languages - Guiding Principles - for institutions subject to Schedules I, I.1 and II to the Financial Administration Act. Other institutions subject to the Official Languages Act must respect the spirit of the principles set out in Annex C.
+Communications Policy of the Government of Canada http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=12316 - for institutions named in Schedules I, I.1 and II to the Financial Administration Act.
+Contracting Policy - Appendix F http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=14494 - for all departments and agencies, including departmental corporations and sectors designated as departments for the purposes of the Financial Administration Act.
+M
+Metadata: Structured information about Web pages and other information resources used to help identify, describe, locate and use these resources.*
+
+Metadata element: A unit of metadata that consists of a defined name and associated values. The values have defined characteristics, sometimes including a set of permissible terms. The name and values may be categorized using attributes.
+
+Attribute: A characteristic of an object or entity.** Attributes of metadata elements categorize the information contained within the elements. For example, the metadata element for the title of a Web page may consist of attributes to identify the metadata element, to contain the title itself, and to identify the language of the title.
+
+* Source: based on metadata definition in Treasury Board Information Technology Standards 39.1.
+**Source: ISO 11179
+
+N
+Notice: The notice appears in both official languages. The following is an example of a notice used when information is provided in one official language as a courtesy:
+
+Please note that access to this section is provided as a courtesy only. Therefore, comments are in the language in which they were communicated to us.
+
+Veuillez noter que l'accès à la section suivante est offert à titre gracieux seulement. Ainsi, les commentaires sont dans la langue dans laquelle ils nous ont été transmis.
+
+O
+Office or facility designated bilingual: An office or facility is designated bilingual if it meets criteria:
+
+set out in the Official Languages Act (OLA) such as:
+an institution's head or central office,
+an office or facility within the National Capital Region,
+an office or facility of an institution that reports directly to Parliament,
+OR
+
+set out in the Official Languages (Communications with and Services to the Public) Regulations (the Regulations)
+An office or facility may take various forms, such as:
+
+a post office;
+a Canadian border port of entry;
+an information desk;
+a toll-free long-distance telephone service; or
+a train, ferry or aircraft that offers services on a route, as set out in the Regulations.
+A list of offices and facilities designated bilingual is available in Burolis at the following address: /burolis/home-accueil-eng.asp. In addition to providing contact information for each office or facility of institutions subject to the OLA, Burolis provides the rationale for the obligation to provide services in both official languages (see "Provision" in the "More Info" section). The codes refer to the sections of the OLA or the Regulations.
+
+Official Languages Act: http://laws-lois.justice.gc.ca/eng/acts/O-3.01/index.html
+
+Other languages: The Official Language Act states:
+
+83. (1) "Nothing in this Act abrogates or derogates from any legal or customary right acquired or enjoyed either before or after the coming into force of this Act with respect to any language that is not English or French."
+
+83. (2) "Nothing in this Act shall be interpreted in a manner that is inconsistent with the preservation and enhancement of languages other than English or French."
+
+P
+Person responsible: http://www.hrma-agrh.gc.ca/ollo/common/Listinstitution-eng.asp
+
+Policy on Language of Work: http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=12520.
+
+Policy on the Use of Official Languages for Communications with and Services to the Public: http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=12526.
+
+Policy on using the Official Languages on Electronic Networks: http://www.tbs-sct.gc.ca/pubs_pol/hrpubs/offlang/uoletoc-eng.asp
+
+Prescribed order: The order of official languages conforms with the principles in Appendix A of the Federal Identity Program Policy (FIP) http://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=12314#Appendice A.
+
+For example, these principles apply to the order of the official languages for the institutional signature, domain name, signature block and any written or verbal message:
+
+Institutional signature: The two official languages are used side by side and appear in the following sequence: French on the left for an office or facility located in Quebec, and English on the left for an office or facility located elsewhere in Canada.
+
+For example:
+
+English - French:
+
+Institutional signature - Treasury Board of Canada Secretariat
+Display full size graphic
+
+French - English:
+
+Signature institutionnelle : Secrétariat du Conseil du Trésor du Canada
+Display full size graphic
+
+Note: On a Web site, the English-French signature appears on a page in English, and the French-English signature appears on a page in French.
+
+Domain name: When the two official languages must be used together, they appear in the following sequence: French first for an office or facility located in Quebec, and English first for an office or facility located elsewhere in Canada.
+
+For example:
+
+English - French: http://www.hrma-agrh.gc.ca
+French - English: http://www.aadnc-aandc.gc.ca/
+
+Signature block: When the two official languages must be used together, they appear in the following sequence: French first for an employee of an office or facility located in Quebec, and English first for an employee of an office or facility located elsewhere in Canada.
+
+For example:
+
+English - French:
+Jean Tremblay
+Advisor, Strategic Planning / Conseiller, Planification stratégique
+Treasury Board Secretariat / Secrétariat du Conseil du Trésor
+Ottawa, Canada
+
+French - English:
+John Smith
+Conseiller, Planification stratégique / Advisor, Strategic Planning
+Patrimoine canadien / Canadian Heritage
+Gatineau, Canada
+
+Written or verbal message: When a bilingual message is sent to several recipients, the message appears in French first for a communication originating from an office or facility located in Quebec, and in English first for a communication originating from an office or facility located elsewhere in Canada. Written messages appearing side by side are to be avoided as they cause accessibility problems, for example, when using screen-to-speech software (a software commonly used by people who are visually impaired).
+
+R
+Regions designated as bilingual for language-of-work purposes: http://www.tbs-sct.gc.ca/pubs_pol/hrpubs/OffLang/CHAP5_1-eng.asp
+
+Regularly and widely used work instruments: For example, the following work tools or instruments are available in both official languages in regions designated as bilingual for language-of-work purposes:
+
+manuals and handbooks of policies, procedures and directives;
+handbooks and documentation needed to deliver services to the public or to employees; and
+lexicons and official institutional publications that employees consult and other similar tools that they use in performing their duties.
+Note that this list is not exhaustive. The institution is responsible for deciding on a case-by-case basis whether work instruments meet the definition of "regularly and widely used." This obligation applies no matter what format is used to make the work instruments available to employees (paper, electronic, etc.).
+
+With regard to computer systems, those provided to employees as information sources or work tools must allow navigation and access to information in either official language; the information must also be available in the official language of the user's choice. As with work instruments, the institution is responsible for deciding on a case-by-case basis whether computer systems meet the definition of "regularly and widely used."
+
+This requirement covers software applications, such as an office automation suite (word processor, electronic document management, spreadsheet, e-mail, etc.) made available to help employees perform their duties.
+In general, this does not include specialized software such as that used by system managers and support technicians to install, configure, maintain and manage the underlying software and hardware infrastructure that makes the institution's software suite available to employees.
+Regularly and widely used information technology systems, including software packages, acquired or produced by or on behalf of institutions after January 1, 1991, are available in both official languages.
+S
+Special circumstances: Circumstances in which the Official Languages Act allows the use of only one official language.
+
+T
+Text equivalents and other non-textual elements: All Government of Canada Web sites and their pages incorporate text equivalents for non-textual elements, such as graphics, images, navigational aids and sound tracks, to ensure that universal accessibility goals are achieved.
+
+Third party: Under section 25 of the Official Languages Act, "Every federal institution has the duty to ensure that, where services are provided or made available by another person or organization on its behalf, any member of the public in Canada or elsewhere can communicate with and obtain those services from that person or organization in either official language in any case where those services, if provided by the institution, would be required [...] to be provided in either official language." Contracts or agreements with third parties should not be confused with transfer payments (grants and contributions). For information related to transfer payments, please see http://www.tbs-sct.gc.ca/fm-gf/tools-outils/guides/ggcotp-gscapttb-eng.asp.
+
+U
+Unilingual office or facility: An office or facility that is not required to communicate with or provide all of its services to the public in both official languages under the Official Languages Act or the Official Languages (Communications with and Services to the Public) Regulations. However, the unilingual office or facility has linguistic obligations it must respect, as set out in the section "Obligations of an institution and its offices or facilities" of the Policy on the Use of Official Languages for Communications with and Services to the Public.
+
+W
+Web site: A Web site may be one of the following networks:
+
+Internet: The term that describes the network created when computers around the world communicate with each other. Based on Transmission Control Protocol/Internet Protocol (TCP/IP), and with universal availability, the Internet is constantly growing and changing.*
+Intranet: Government access-controlled electronic network operated by one or more Government of Canada institutions accessible only from within the Government of Canada. (e.g., Publiservice, institutional Intranet, regional Intranet.)*
+Extranet: Government access-controlled electronic network that allows access by designated people inside and outside Government of Canada institutions.*
+*Source:Chief Information Officer Branch http://www.tbs-sct.gc.ca/cio-dpi/index-eng.asp
+
+Welcome page are in the official language of the site: For a Government of Canada bilingual Web site, entering a URL (such as www.canada.gc.ca) will take users to a welcome page with a bilingual greeting and choice of language. In the case of a unilingual site, there will be no choice of language, and the greeting will be only in the language of the site.
+
+Without changing the content: For example, rewriting, abridging or translating in whole or in part the material, or adding text or illustrations to it, changes the content. Electronic treatment for the purpose of posting the material is not considered to be a change of the content.
+
+X
+Y
+Z
+"Page details"
+Date modified:2005-07-15
+About this site
+Government of Canada CorporateTerms and conditions Privacy
+Symbol of the Government of Canada
+ 

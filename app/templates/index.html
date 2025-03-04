@@ -1,0 +1,2043 @@
+<!DOCTYPE html>
+<html lang="{{ g.language }}" class="{{ 'high-contrast-theme' if high_contrast }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ translations.tool_title }}</title>
+    <!-- Add Bootstrap CSS before other styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/wet-boew.min.css"/>
+    <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/theme.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css">
+    <style>
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .main-content {
+            display: flex;
+            padding: 20px;
+            flex: 1;
+            position: relative;
+            gap: 20px;
+        }
+        .map-section {
+            flex: 0.8;
+            margin-right: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .side-panel {
+            position: relative;
+            flex: 0.2;
+            right: auto;
+            width: auto;
+            display: flex;
+            flex-direction: column;
+            height: 600px; /* Match map height */
+            gap: 10px; /* Add consistent gap between sections */
+        }
+        .toc-section {
+            flex: 0.8; /* Increase ratio for layer control */
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 0; /* Remove margin as we're using gap */
+            overflow-y: auto;
+            min-height: 0; /* Allow flex container to shrink */
+        }
+        .info-section {
+            flex: 0.2; /* Decrease ratio for info section */
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 0; /* Remove margin as we're using gap */
+            overflow-y: auto;
+            min-height: 0; /* Allow flex container to shrink */
+        }
+        #map {
+            height: 600px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .controls-section {
+            margin-top: 20px;
+        }
+        .upload-section {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .analysis-section {
+            margin-bottom: 20px;
+        }
+        .tooltip-icon {
+            margin-left: 8px;
+            color: #284162;
+            cursor: help;
+        }
+        .tooltip {
+            max-width: 300px;
+        }
+        .layer-control {
+            margin-bottom: 15px;
+            padding: 8px;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .layer-item {
+            margin-bottom: 15px;
+            padding: 5px;
+        }
+        .layer-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .visibility-toggle {
+            cursor: pointer;
+            margin-right: 8px;
+            color: #284162;
+        }
+        .layer-name {
+            font-size: 0.9rem;
+        }
+        .opacity-control {
+            margin-top: 5px;
+            width: 100%;
+        }
+        .opacity-control input[type="range"] {
+            width: 100%;
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            border: 0;
+        }
+        .analysis-buttons {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        #analysis-info {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #666;
+        }
+        /* Add marker cluster custom styles */
+        .marker-cluster-small {
+            background-color: rgba(181, 226, 140, 0.6);
+        }
+        .marker-cluster-small div {
+            background-color: rgba(110, 204, 57, 0.6);
+        }
+        .marker-cluster-medium {
+            background-color: rgba(241, 211, 87, 0.6);
+        }
+        .marker-cluster-medium div {
+            background-color: rgba(240, 194, 12, 0.6);
+        }
+        .marker-cluster-large {
+            background-color: rgba(253, 156, 115, 0.6);
+        }
+        .marker-cluster-large div {
+            background-color: rgba(241, 128, 23, 0.6);
+        }
+        .analysis-section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .analysis-section-header h3 {
+            margin: 0;
+        }
+
+        .analysis-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #284162;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        /* Hide DataTables filter elements */
+        .dataTables_filter,
+        .dataTables_length,
+        .dataTables_info {
+            display: none !important;
+        }
+
+        /* Style for DataTables pagination and export buttons */
+        .dataTables_wrapper .dt-buttons {
+            margin-bottom: 10px;
+        }
+
+        .dataTables_wrapper .dataTables_paginate {
+            margin-top: 10px;
+        }
+        /* High contrast theme styles */
+        .high-contrast-theme {
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+
+        .high-contrast-theme .side-panel {
+            background-color: #000000;
+            border: 2px solid #FFFFFF;
+        }
+
+        .high-contrast-theme .toc-section,
+        .high-contrast-theme .info-section {
+            background-color: #1A1A1A;
+            border: 1px solid #FFFFFF;
+        }
+
+        .high-contrast-theme .layer-control {
+            background-color: #1A1A1A;
+            border: 1px solid #FFFFFF;
+        }
+
+        .high-contrast-theme .btn-primary {
+            background-color: #FFFF00;
+            color: #000000;
+            border: 2px solid #FFFFFF;
+        }
+
+        .high-contrast-theme .btn-secondary {
+            background-color: #FFFFFF;
+            color: #000000;
+            border: 2px solid #FFFF00;
+        }
+
+        .high-contrast-theme .form-control {
+            background-color: #000000;
+            color: #FFFFFF;
+            border: 2px solid #FFFFFF;
+        }
+
+        .high-contrast-theme .tooltip-icon {
+            color: #FFFF00;
+        }
+
+        .high-contrast-theme .analysis-number {
+            background-color: #FFFF00;
+            color: #000000;
+            border: 2px solid #FFFFFF;
+        }
+        .map-control-btn:focus,
+        .visibility-toggle:focus,
+        input[type="range"]:focus {
+            outline: 3px solid #FF9F1C;
+            outline-offset: 2px;
+        }
+
+        .map-controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .map-control-btn {
+            padding: 8px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* High contrast support */
+        .high-contrast-theme .map-control-btn {
+            background: #000;
+            color: #fff;
+            border-color: #fff;
+        }
+
+        .high-contrast-theme .map-control-btn:focus {
+            outline-color: #FFFF00;
+        }
+
+        /* Add language toggle button styles */
+        .language-toggle {
+            background: transparent;
+            border: 1px solid #284162;
+            color: #284162;
+            padding: 5px 15px;
+            border-radius: 3px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .language-toggle:hover, .language-toggle:focus {
+            background: #284162;
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Add high contrast styles for language toggle */
+        .high-contrast-theme .language-toggle {
+            border-color: #FFFFFF;
+            color: #FFFFFF;
+        }
+        
+        .high-contrast-theme .language-toggle:hover,
+        .high-contrast-theme .language-toggle:focus {
+            background: #FFFFFF;
+            color: #000000;
+        }
+    </style>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Add Bootstrap JS for tooltips -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body vocab="http://schema.org/" typeof="WebPage">
+    <!-- Government of Canada header -->
+    <div id="def-top">
+        <header role="banner">
+            <div id="wb-bnr" class="container">
+                <div class="row">
+                    <div class="brand col-xs-8 col-sm-9 col-md-6">
+                        <a href="https://www.canada.ca/{{ g.language }}.html">
+                            <img src="https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-{{ g.language }}.svg" 
+                                 alt="{{ translations.government_of_canada }}">
+                            <span class="wb-inv">{{ translations.government_of_canada }}</span>
+                        </a>
+                    </div>
+                    <div class="col-xs-4 col-sm-3 col-md-6 text-right">
+                        <button type="button" 
+                                class="language-toggle"
+                                onclick="changeLanguage('{{ 'fr' if g.language == 'en' else 'en' }}')"
+                                aria-label="{{ translations.french if g.language == 'en' else translations.english }}">
+                            {{ translations.french if g.language == 'en' else translations.english }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <div class="app-container">
+        <main role="main" property="mainContentOfPage" class="container">
+            <h1 id="wb-cont">{{ translations.tool_title }}</h1>
+            <div class="accessibility-controls mb-3">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="high-contrast-mode">
+                    <label class="form-check-label" for="high-contrast-mode">
+                        {{ translations.high_contrast_mode }}
+                        <i class="fas fa-info-circle tooltip-icon" 
+                           data-toggle="tooltip" 
+                           data-placement="right"
+                           title="{{ translations.high_contrast_tooltip }}"></i>
+                    </label>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="map-section">
+                    <div id="map" role="application" aria-label="Interactive spatial data map" tabindex="0">
+                        <!-- Map container remains unchanged -->
+                    </div>
+
+                    <div class="map-controls" role="group" aria-label="Map navigation controls">
+                        <button id="map-reset" class="map-control-btn" aria-label="Reset map view">
+                            <i class="fas fa-home" aria-hidden="true"></i>
+                        </button>
+                    </div>
+
+                    <div class="controls-section">
+                        <div class="upload-section">
+                            <div>
+                                <label for="points-file">{{ translations.upload_points }}</label>
+                                <input type="file" id="points-file" accept=".csv,.geojson" 
+                                       aria-describedby="points-file-help">
+                                <div id="points-file-help" class="help-text">
+                                    {{ translations.points_file_help }}
+                                </div>
+                            </div>
+                            <div>
+                                <label for="boundary-file">{{ translations.upload_boundary }}</label>
+                                <input type="file" id="boundary-file" accept=".geojson,.shp"
+                                       aria-describedby="boundary-file-help">
+                                <div id="boundary-file-help" class="help-text">
+                                    {{ translations.boundary_file_help }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="analysis-section">
+                            <h2>{{ translations.analysis_type }}</h2>
+                            <div style="margin-top: 20px;" class="analysis-section-header">
+                                <span class="analysis-number">1</span>
+                                <h3>{{ translations.heatmap_title }}</h3>
+                            </div>
+                            <div class="analysis-buttons">
+                                <button class="btn btn-primary" id="generate-heatmap">
+                                    {{ translations.generate_heatmap }}
+                                </button>
+                                <i class="fas fa-info-circle tooltip-icon" 
+                                   data-toggle="tooltip" 
+                                   data-placement="right"
+                                   title="{{ translations.heatmap_tooltip }}"></i>
+                            </div>
+
+                            <div style="margin-top: 20px;" class="analysis-section-header">
+                                <span class="analysis-number">2</span>
+                                <h3>{{ translations.morans_i }}</h3>
+                            </div>
+                            <div class="form-group">
+                                <label for="morans-type">{{ translations.morans_analysis_type }}</label>
+                                <select id="morans-type" class="form-control">
+                                    <option value="count">{{ translations.morans_type_count }}</option>
+                                    <option value="weighted">{{ translations.morans_type_weighted }}</option>
+                                </select>
+                                <i class="fas fa-info-circle tooltip-icon" 
+                                   data-toggle="tooltip" 
+                                   data-placement="right"
+                                   title="{{ translations.morans_tooltip }}"></i>
+                            </div>
+                            <div class="analysis-buttons">
+                                <button class="btn btn-primary" id="generate-morans" disabled>
+                                    {{ translations.generate_morans }}
+                                </button>
+                                <button class="btn btn-secondary" id="export-morans-geojson" disabled>
+                                    {{ translations.export_morans }}
+                                </button>
+                                <i class="fas fa-info-circle tooltip-icon" 
+                                   data-toggle="tooltip" 
+                                   data-placement="right"
+                                   title="Local Moran's I measures spatial autocorrelation by comparing values at each location with the average of neighboring values. Formula: Ii = zi * Σ(wij * zj), where zi is the standardized value at location i, wij are spatial weights, and zj are neighboring values. Learn more at https://geodacenter.github.io/workbook/6a_local_auto/lab6a.html"></i>
+                            </div>
+
+                            <!-- K-means section -->
+                            <div style="margin-top: 20px;" class="analysis-section-header">
+                                <span class="analysis-number">3</span>
+                                <h3>{{ translations.kmeans }}</h3>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="kmeans-clusters">{{ translations.kmeans_number_label }}</label>
+                                <input type="number" id="kmeans-clusters" class="form-control" value="5" min="2" max="10">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="kmeans-max-iterations">{{ translations.kmeans_max_iterations_label }}</label>
+                                <input type="number" id="kmeans-max-iterations" class="form-control" value="300" min="50" max="1000" step="50">
+                                <small class="form-text text-muted">{{ translations.kmeans_max_iterations_help }}</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="kmeans-init-method">{{ translations.kmeans_init_method_label }}</label>
+                                <select id="kmeans-init-method" class="form-control">
+                                    <option value="kmeans++">{{ translations.kmeans_init_method_kmeans_plus }}</option>
+                                    <option value="random">{{ translations.kmeans_init_method_random }}</option>
+                                </select>
+                                <small class="form-text text-muted">{{ translations.kmeans_init_method_help }}</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="kmeans-distance">{{ translations.kmeans_distance_metric_label }}</label>
+                                <select id="kmeans-distance" class="form-control">
+                                    <option value="euclidean">{{ translations.kmeans_distance_euclidean }}</option>
+                                    <option value="network">{{ translations.kmeans_distance_network }}</option>
+                                </select>
+                                <small class="form-text text-muted">{{ translations.kmeans_distance_help }}</small>
+                                <small id="network-distance-help" class="form-text text-muted" style="display: none;">
+                                    {{ translations.kmeans_distance_network_help }}
+                                </small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="kmeans-convergence">{{ translations.kmeans_convergence_label }}</label>
+                                <input type="number" id="kmeans-convergence" class="form-control" value="0.001" min="0.0001" max="0.01" step="0.0001">
+                                <small class="form-text text-muted">{{ translations.kmeans_convergence_help }}</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="kmeans-random-seed">{{ translations.kmeans_random_seed_label }}</label>
+                                <input type="number" id="kmeans-random-seed" class="form-control" value="42" min="1">
+                                <small class="form-text text-muted">{{ translations.kmeans_random_seed_help }}</small>
+                            </div>
+
+                            <div class="analysis-buttons">
+                                <button class="btn btn-primary" id="generate-kmeans">
+                                    {{ translations.generate_kmeans }}
+                                </button>
+                                <button class="btn btn-secondary" id="export-points-csv" disabled>
+                                    {{ translations.export_points_csv }}
+                                </button>
+                                <button class="btn btn-secondary" id="export-points-geojson" disabled>
+                                    {{ translations.export_points_geojson }}
+                                </button>
+                                <i class="fas fa-info-circle tooltip-icon" 
+                                   data-toggle="tooltip" 
+                                   data-placement="right"
+                                   title="{{ translations.kmeans_tooltip }}"></i>
+                            </div>
+
+                            <!-- Collapsible K-means Results Tables -->
+                            <div class="mt-3">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" 
+                                        data-target="#kmeansTables" aria-expanded="false" 
+                                        aria-controls="kmeansTables">
+                                    {{ translations.show_hide_kmeans }}
+                                </button>
+                                <div class="collapse" id="kmeansTables">
+                                    <div class="card card-body">
+                                        <h4>{{ translations.kmeans_cluster_summary }}</h4>
+                                        <table id="cluster-summary-table" class="wb-tables table display" 
+                                               aria-label="{{ translations.kmeans_cluster_summary }}">
+                                            <thead>
+                                                <tr>
+                                                    <th>{{ translations.table_headers.cluster_id }}</th>
+                                                    <th>{{ translations.table_headers.points_count }}</th>
+                                                    <th>{{ translations.table_headers.center_latitude }}</th>
+                                                    <th>{{ translations.table_headers.center_longitude }}</th>
+                                                    <th>{{ translations.table_headers.average_weight }}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="cluster-summary">
+                                            </tbody>
+                                        </table>
+
+                                        <h4 style="margin-top: 20px;">{{ translations.kmeans_points_detail }}</h4>
+                                        <table id="points-detail-table" class="wb-tables table display" 
+                                               aria-label="{{ translations.kmeans_points_detail }}">
+                                            <thead>
+                                                <tr>
+                                                    <th>{{ translations.table_headers.point_id }}</th>
+                                                    <th>{{ translations.table_headers.latitude }}</th>
+                                                    <th>{{ translations.table_headers.longitude }}</th>
+                                                    <th>{{ translations.table_headers.cluster }}</th>
+                                                    <th>{{ translations.table_headers.weight }}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="points-detail">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- H3 section -->
+                            <div style="margin-top: 20px;" class="analysis-section-header">
+                                <span class="analysis-number">4</span>
+                                <h3>{{ translations.h3_grid }}</h3>
+                            </div>
+                            <div class="form-group">
+                                <label for="h3-resolution">{{ translations.grid_resolution_label }}</label>
+                                <input type="number" id="h3-resolution" class="form-control" value="8" min="6" max="10">
+                                <i class="fas fa-info-circle tooltip-icon" 
+                                   data-toggle="tooltip" 
+                                   data-placement="right"
+                                   title="{{ translations.h3_tooltip }}"></i>
+                            </div>
+                            <div class="analysis-buttons">
+                                <button class="btn btn-primary" id="generate-h3-grid">
+                                    {{ translations.generate_h3_grid }}
+                                </button>
+                                <button class="btn btn-secondary" id="export-h3-geojson" disabled>
+                                    {{ translations.export_h3_grid }}
+                                </button>
+                            </div>
+
+                            <!-- Constrained section -->
+                            <div style="margin-top: 20px;" class="analysis-section-header">
+                                <span class="analysis-number">5</span>
+                                <h3>{{ translations.constrained }}</h3>
+                            </div>
+                            <div class="form-group">
+                                <label for="constrained-clusters">{{ translations.constrained_clusters_label }}</label>
+                                <input type="number" id="constrained-clusters" class="form-control" value="5" min="2" max="10">
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="use-weights">
+                                <label class="form-check-label" for="use-weights">{{ translations.use_weights }}</label>
+                            </div>
+                            <div class="analysis-buttons">
+                                <button class="btn btn-primary" id="generate-constrained">
+                                    {{ translations.generate_constrained }}
+                                </button>
+                                <button class="btn btn-secondary" id="export-constrained-geojson" disabled>
+                                    {{ translations.export_constrained }}
+                                </button>
+                                <i class="fas fa-info-circle tooltip-icon" 
+                                   data-toggle="tooltip" 
+                                   data-placement="right"
+                                   title="{{ translations.constrained_tooltip }}"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="side-panel">
+                    <div class="toc-section">
+                        <div id="points-layer-control" class="layer-item" style="display: none;">
+                            <div class="layer-header">
+                                <button class="visibility-toggle" 
+                                        aria-label="Toggle points layer visibility"
+                                        aria-pressed="true"
+                                        role="switch">
+                                    <i class="fas fa-eye" aria-hidden="true"></i>
+                                </button>
+                                <span class="layer-name" id="points-layer-label">Points Layer</span>
+                            </div>
+                            <div class="opacity-control">
+                                <label for="points-opacity">Points Layer Opacity</label>
+                                <input type="range" 
+                                       id="points-opacity" 
+                                       min="0" 
+                                       max="1" 
+                                       step="0.1" 
+                                       value="1"
+                                       aria-labelledby="points-layer-label"
+                                       aria-valuemin="0"
+                                       aria-valuemax="1"
+                                       aria-valuenow="1">
+                            </div>
+                        </div>
+                        <div id="boundary-layer-control" class="layer-item" style="display: none;">
+                            <div class="layer-header">
+                                <i class="fas fa-eye visibility-toggle" id="boundary-visibility" title="Toggle visibility"></i>
+                                <span class="layer-name">{{ translations.boundary_layer }}</span>
+                            </div>
+                            <div class="opacity-control">
+                                <label for="boundary-opacity" class="sr-only">{{ translations.boundary_opacity }}</label>
+                                <input type="range" id="boundary-opacity" min="0" max="1" step="0.1" value="0.2"
+                                       aria-label="{{ translations.boundary_opacity }}">
+                            </div>
+                        </div>
+                        <div id="heatmap-layer-control" class="layer-item" style="display: none;">
+                            <div class="layer-header">
+                                <button class="visibility-toggle" 
+                                        aria-label="Toggle heatmap layer visibility"
+                                        aria-pressed="true"
+                                        role="switch">
+                                    <i class="fas fa-eye" aria-hidden="true"></i>
+                                </button>
+                                <span class="layer-name" id="heatmap-layer-label">Heatmap Layer</span>
+                            </div>
+                            <div class="opacity-control">
+                                <label for="heatmap-opacity">Heatmap Layer Opacity</label>
+                                <input type="range" 
+                                       id="heatmap-opacity" 
+                                       min="0" 
+                                       max="1" 
+                                       step="0.1" 
+                                       value="0.6"
+                                       aria-labelledby="heatmap-layer-label"
+                                       aria-valuemin="0"
+                                       aria-valuemax="1"
+                                       aria-valuenow="0.6">
+                            </div>
+                        </div>
+                        <div id="morans-layer-control" class="layer-item" style="display: none;">
+                            <div class="layer-header">
+                                <i class="fas fa-eye visibility-toggle" id="morans-visibility" title="Toggle visibility"></i>
+                                <span class="layer-name">Local Moran's I Layer</span>
+                            </div>
+                            <div class="opacity-control">
+                                <label for="morans-opacity" class="sr-only">Local Moran's I Opacity</label>
+                                <input type="range" id="morans-opacity" min="0" max="1" step="0.1" value="0.7"
+                                       aria-label="Local Moran's I Opacity">
+                            </div>
+                        </div>
+                        <div id="kmeans-layer-control" class="layer-item" style="display: none;">
+                            <div class="layer-header">
+                                <i class="fas fa-eye visibility-toggle" id="kmeans-visibility" title="Toggle visibility"></i>
+                                <span class="layer-name">K-means Clusters Layer</span>
+                            </div>
+                            <div class="opacity-control">
+                                <label for="kmeans-opacity" class="sr-only">K-means Clusters Opacity</label>
+                                <input type="range" id="kmeans-opacity" min="0" max="1" step="0.1" value="1"
+                                       aria-label="K-means Clusters Opacity">
+                            </div>
+                        </div>
+                        <div id="h3-grid-layer-control" class="layer-item" style="display: none;">
+                            <div class="layer-header">
+                                <i class="fas fa-eye visibility-toggle" id="h3-grid-visibility" title="Toggle visibility"></i>
+                                <span class="layer-name">H3 Hexagonal Grid</span>
+                            </div>
+                            <div class="opacity-control">
+                                <label for="h3-grid-opacity" class="sr-only">H3 Grid Opacity</label>
+                                <input type="range" id="h3-grid-opacity" min="0" max="1" step="0.1" value="0.6"
+                                       aria-label="H3 Grid Opacity">
+                            </div>
+                        </div>
+                        <div id="constrained-layer-control" class="layer-item" style="display: none;">
+                            <div class="layer-header">
+                                <i class="fas fa-eye visibility-toggle" id="constrained-visibility" title="Toggle visibility"></i>
+                                <span class="layer-name">Constrained Clusters</span>
+                            </div>
+                            <div class="opacity-control">
+                                <label for="constrained-opacity" class="sr-only">Constrained Clusters Opacity</label>
+                                <input type="range" id="constrained-opacity" min="0" max="1" step="0.1" value="0.6"
+                                       aria-label="Constrained Clusters Opacity">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-section">
+                        <div id="analysis-info">
+                            {{ translations.analysis_info_default }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Government of Canada footer -->
+        <div id="def-footer">
+            <footer role="contentinfo" id="wb-info">
+                <div class="brand">
+                    <div class="container">
+                        <div class="row">
+                            <nav class="col-md-10 ftr-urlt-lnk">
+                                <h2 class="wb-inv">About this site</h2>
+                                <ul>
+                                    <li><a href="{{ translations.contact }}">{{ translations.contact }}</a></li>
+                                    <li><a href="{{ translations.terms }}">{{ translations.terms }}</a></li>
+                                    <li><a href="{{ translations.privacy }}">{{ translations.privacy }}</a></li>
+                                    <li><a href="/accessibility">Accessibility</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Scripts in correct order -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/wet-boew.min.js"></script>
+    <script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>  <!-- Added MarkerCluster library -->
+    <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+
+    <!-- Add language toggle functionality -->
+    <script>
+        function changeLanguage(lang) {
+            fetch('/api/language', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ language: lang })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    window.location.reload();
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+
+    <!-- Initialize global variables -->
+    <script>
+            // Define styles
+            const defaultStyle = {
+                'default': {
+                    tiles: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    attribution: '© OpenStreetMap contributors'
+                },
+                'boundary': {
+                    color: '#3388ff',
+                    weight: 1,
+                    fillColor: '#3388ff',
+                    fillOpacity: 0.2
+                },
+                'points': {
+                    color: '#3388ff',
+                    fillColor: '#3388ff',
+                    weight: 1,
+                    radius: 6,
+                    fillOpacity: 0.6
+                }
+            };
+
+            const highContrastStyle = {
+                'default': {
+                    tiles: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+                    attribution: '© OpenStreetMap contributors, © CARTO'
+                },
+                'boundary': {
+                    color: '#FFFFFF',
+                    weight: 2,
+                    fillColor: '#FFD700',
+                    fillOpacity: 0.6
+                },
+                'points': {
+                    color: '#00FF00',
+                    fillColor: '#00FF00',
+                    weight: 2,
+                    radius: 8,
+                    fillOpacity: 1
+                }
+            };
+
+            // Initialize variables
+            let currentStyle = defaultStyle;
+            let baseLayer;
+            let currentMarkerCluster = null;
+            let currentBoundaryLayer = null;
+            let currentHeatmapLayer = null;
+            let currentMoransLayer = null;
+            let currentKmeansLayer = null;
+            let currentH3Layer = null;
+            let currentConstrainedLayer = null;
+
+            // Initialize map
+            const initialView = {
+                center: [45.4215, -75.6972],
+                zoom: 4
+            };
+
+            const map = L.map('map', {
+                center: initialView.center,
+                zoom: initialView.zoom
+            });
+
+            // Add base layer
+            baseLayer = L.tileLayer(currentStyle.default.tiles, {
+                attribution: currentStyle.default.attribution
+            }).addTo(map);
+
+            // Initialize layer visibility toggle handlers
+            document.addEventListener('DOMContentLoaded', function() {
+                // Initialize visibility toggles
+                document.querySelectorAll('.visibility-toggle').forEach(toggle => {
+                    toggle.addEventListener('click', function() {
+                        const layerControl = this.closest('.layer-item');
+                        if (!layerControl) return;
+
+                        const layerId = layerControl.id.replace('-layer-control', '');
+                        const isVisible = this.getAttribute('aria-pressed') === 'true';
+                        
+                        // Update button state
+                        this.setAttribute('aria-pressed', (!isVisible).toString());
+                        const icon = this.querySelector('i');
+                        if (icon) {
+                            icon.classList.toggle('fa-eye');
+                            icon.classList.toggle('fa-eye-slash');
+                        }
+                        
+                        // Get the corresponding layer based on ID
+                        let layer;
+                        switch(layerId) {
+                            case 'points': layer = currentMarkerCluster; break;
+                            case 'boundary': layer = currentBoundaryLayer; break;
+                            case 'heatmap': layer = currentHeatmapLayer; break;
+                            case 'morans': layer = currentMoransLayer; break;
+                            case 'kmeans': layer = currentKmeansLayer; break;
+                            case 'h3-grid': layer = currentH3Layer; break;
+                            case 'constrained': layer = currentConstrainedLayer; break;
+                        }
+                        
+                        // Toggle layer visibility if layer exists
+                        if (layer) {
+                            if (!isVisible) {
+                                map.addLayer(layer);
+                            } else {
+                                map.removeLayer(layer);
+                            }
+                        }
+                    });
+                });
+
+                // Handle opacity changes
+                document.querySelectorAll('.opacity-control input[type="range"]').forEach(slider => {
+                    slider.addEventListener('input', function() {
+                        const layerControl = this.closest('.layer-item');
+                        if (!layerControl) return;
+
+                        const layerId = layerControl.id.replace('-layer-control', '');
+                        const opacity = parseFloat(this.value);
+                        
+                        // Update layer opacity based on layer type
+                        switch(layerId) {
+                            case 'points':
+                                if (currentMarkerCluster) {
+                                    currentMarkerCluster.eachLayer(layer => {
+                                        layer.setOpacity(opacity);
+                                    });
+                                }
+                                break;
+                            case 'boundary':
+                                if (currentBoundaryLayer) {
+                                    currentBoundaryLayer.setStyle({ opacity: opacity, fillOpacity: opacity });
+                                }
+                                break;
+                            case 'heatmap':
+                                if (currentHeatmapLayer) {
+                                    currentHeatmapLayer.setOpacity(opacity);
+                                }
+                                break;
+                            // Add cases for other layer types as needed
+                        }
+                    });
+                });
+
+                // Initialize high contrast mode toggle
+                document.getElementById('high-contrast-mode').addEventListener('change', function(e) {
+                    updateMapTheme(e.target.checked);
+                    document.body.classList.toggle('high-contrast-theme', e.target.checked);
+                });
+
+                // Initialize map reset button
+                document.getElementById('map-reset').addEventListener('click', function() {
+                    map.setView(initialView.center, initialView.zoom);
+                });
+            });
+        </script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+    <script>
+        // Helper functions
+        function createPointPopup(feature) {
+            let content = '<div class="point-popup">';
+            for (const [key, value] of Object.entries(feature.properties)) {
+                if (key !== 'style') {
+                    content += `<strong>${key}:</strong> ${value}<br>`;
+                }
+            }
+            content += '</div>';
+            return content;
+        }
+
+        function createClusters(features, distanceThreshold, minPoints) {
+            const clusters = [];
+            const visited = new Set();
+
+            features.forEach((point, i) => {
+                if (visited.has(i)) return;
+                visited.add(i);
+
+                const cluster = [point];
+                const coords1 = point.geometry.coordinates;
+
+                features.forEach((otherPoint, j) => {
+                    if (i === j || visited.has(j)) return;
+
+                    const coords2 = otherPoint.geometry.coordinates;
+                    const distance = calculateDistance(coords1, coords2);
+
+                    if (distance <= distanceThreshold) {
+                        cluster.push(otherPoint);
+                        visited.add(j);
+                    }
+                });
+
+                if (cluster.length >= minPoints) {
+                    clusters.push(cluster);
+                }
+            });
+
+            // Add remaining points as individual clusters
+            features.forEach((point, i) => {
+                if (!visited.has(i)) {
+                    clusters.push([point]);
+                }
+            });
+
+            return clusters;
+        }
+
+        function calculateDistance(coords1, coords2) {
+            const [lon1, lat1] = coords1;
+            const [lon2, lat2] = coords2;
+            return Math.sqrt(Math.pow(lon2 - lon1, 2) + Math.pow(lat2 - lat1, 2));
+        }
+
+        // Define cluster colors array
+        const clusterColors = [
+            '#e41a1c', // red
+            '#377eb8', // blue
+            '#4daf4a', // green
+            '#984ea3', // purple
+            '#ff7f00', // orange
+            '#ffff33', // yellow
+            '#a65628', // brown
+            '#f781bf', // pink
+            '#999999', // grey
+            '#66c2a5'  // teal
+        ];
+
+
+
+        // Update map theme function
+        function updateMapTheme(isHighContrast) {
+            currentStyle = isHighContrast ? highContrastStyle : defaultStyle;
+
+            // Update base layer
+            if (baseLayer) {
+                map.removeLayer(baseLayer);
+            }
+            baseLayer = L.tileLayer(currentStyle.default.tiles, {
+                attribution: currentStyle.default.attribution
+            }).addTo(map);
+
+            // Update boundary layer if exists
+            if (currentBoundaryLayer) {
+                currentBoundaryLayer.setStyle(currentStyle.boundary);
+            }
+
+            // Update point markers if exist
+            if (currentMarkerCluster) {
+                currentMarkerCluster.eachLayer((layer) => {
+                    layer.setStyle(currentStyle.points);
+                });
+            }
+        }
+
+        // Add event listener for theme toggle
+        document.getElementById('high-contrast-mode').addEventListener('change', function(e) {
+            updateMapTheme(e.target.checked);
+
+            // Update UI elements for high contrast
+            document.body.classList.toggle('high-contrast-theme', e.target.checked);
+        });
+
+
+
+        // Handle opacity changes for different layers
+        document.querySelectorAll('.opacity-control input').forEach(input => {
+            input.addEventListener('input', function(event) {
+                const id = event.target.id;
+                const opacity = parseFloat(event.target.value);
+                const layerType = id.split('-')[0];
+
+                if (layerType === 'points' && currentMarkerCluster) {
+                    currentMarkerCluster.eachLayer((layer) => {
+                        layer.setOpacity(opacity);
+                    });
+                } else if (layerType === 'boundary' && currentBoundaryLayer) {
+                    currentBoundaryLayer.setStyle({
+                        fillOpacity: opacity
+                    });
+                } else if (layerType === 'heatmap' && currentHeatmapLayer) {
+                    currentHeatmapLayer.setOptions({
+                        opacity: opacity
+                    });
+                } else if (layerType === 'morans' && currentMoransLayer) {
+                    currentMoransLayer.setStyle({ fillOpacity: opacity });
+                } else if (layerType === 'kmeans' && currentKmeansLayer) {
+                    currentKmeansLayer.eachLayer((layer) => {
+                        if (layer instanceof L.CircleMarker) {
+                            layer.setStyle({ fillOpacity: opacity });
+                        }
+                    });
+                } else if (layerType === 'h3-grid' && currentH3Layer) {
+                    currentH3Layer.setStyle({ fillOpacity: opacity });
+                } else if (layerType === 'constrained' && currentConstrainedLayer) {
+                    currentConstrainedLayer.setStyle({ fillOpacity: opacity });
+                }
+            });
+        });
+
+        // File upload handlers
+        document.getElementById('points-file').addEventListener('change', async (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch('/api/upload/points', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Error uploading file');
+                }
+
+                const data = await response.json();
+                if (data.success) {
+                    // Clear existing points if any
+                    if (currentMarkerCluster) {
+                        map.removeLayer(currentMarkerCluster);
+                    }
+
+                    // Fetch the updated map data
+                    const geoResponse = await fetch('/api/get-points');
+                    const geoData = await geoResponse.json();
+
+                    // Create clusters using custom function
+                    const clusters = createClusters(geoData.features, 0.1, 3);
+
+                    // Create new marker cluster group
+                    currentMarkerCluster = L.markerClusterGroup({
+                        chunkedLoading: true,
+                        maxClusterRadius: 50,
+                        spiderfyOnMaxZoom: true,
+                        showCoverageOnHover: true,
+                        zoomToBoundsOnClick: true
+                    });
+
+                    // Add markers to their respective clusters
+                    clusters.forEach(cluster => {
+                        cluster.forEach(feature => {
+                            const coords = feature.geometry.coordinates;
+                            // Create marker with current theme styling
+                            const marker = L.marker([coords[1], coords[0]], {
+                                riseOnHover: true,
+                                riseOffset: 250
+                            });
+
+                            // Add popup with all properties
+                            marker.bindPopup(createPointPopup(feature));
+                            currentMarkerCluster.addLayer(marker);
+                        });
+                    });
+
+                    // Add cluster to map
+                    map.addLayer(currentMarkerCluster);
+
+                    // Fit bounds if points exist
+                    if (geoData.features.length > 0) {
+                        const bounds = currentMarkerCluster.getBounds();
+                        map.fitBounds(bounds);
+                    }
+
+                    document.getElementById('points-layer-control').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error uploading points:', error);
+                alert('Error uploading file: ' + error.message);
+            }
+        });
+
+        document.getElementById('boundary-file').addEventListener('change', async (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch('/api/upload/boundary', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Error uploading file');
+                }
+
+                const data = await response.json();
+                if (data.success) {
+                    // Remove existing boundary layer if any
+                    if (currentBoundaryLayer) {
+                        map.removeLayer(currentBoundaryLayer);
+                    }
+
+                    // Fetch and add the new boundary data
+                    const boundaryResponse = await fetch('/api/get-boundary');
+                    const boundaryData = await boundaryResponse.json();
+
+                    currentBoundaryLayer = L.geoJSON(boundaryData, {
+                        style: currentStyle.boundary
+                    }).addTo(map);
+
+                    // Fit bounds to show the boundary
+                    const bounds = currentBoundaryLayer.getBounds();
+                    map.fitBounds(bounds);
+                    document.getElementById('boundary-layer-control').style.display = 'flex';
+                }
+            } catch (error) {
+                console.error('Error uploading boundary:', error);
+                alert('Error uploading file: ' + error.message);
+            }
+        });
+
+
+
+        // Add heatmap generation handler
+        document.getElementById('generate-heatmap').addEventListener('click', async () => {
+            if (!currentMarkerCluster) {
+                alert('Please upload point data first');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/analysis/heatmap', {
+                    method: 'POST'
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+
+                // Remove existing heatmap if any
+                if (currentHeatmapLayer) {
+                    map.removeLayer(currentHeatmapLayer);
+                }
+
+                // Create new heatmap layer using leaflet-heat
+                currentHeatmapLayer = L.heatLayer(
+                    data.data.locations.map(loc => [loc[0], loc[1], 1]),
+                    {
+                        radius: 25,
+                        blur: 15,
+                        maxZoom: 10,
+                        minOpacity: 0.3,
+                        maxOpacity: 0.6,
+                        gradient: {0.4: 'blue', 0.6: 'cyan', 0.7: 'lime', 0.8: 'yellow', 1: 'red'}
+                    }
+                ).addTo(map);
+
+                // Show heatmap controls
+                document.getElementById('heatmap-layer-control').style.display = 'block';
+
+            } catch (error) {
+                console.error('Error generating heatmap:', error);
+                alert('Error generating heatmap: ' + error.message);
+            }
+        });
+
+
+        // Enable/disable Moran's I button based on boundary file
+        document.getElementById('boundary-file').addEventListener('change', function(event) {
+            document.getElementById('generate-morans').disabled = !event.target.files.length;
+        });
+
+        // Generate Local Moran's I
+        document.getElementById('generate-morans').addEventListener('click', async () => {
+            if (!currentMarkerCluster) {
+                alert('Please upload point data first');
+                return;
+            }
+
+            try {
+                const analysisType = document.getElementById('morans-type').value;
+
+                const response = await fetch('/api/analysis/morans', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        analysis_type: analysisType,
+                        weight_column: analysisType === 'weighted' ? 'weight' : null
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+
+                // Remove existing Moran's I layer if any
+                if (currentMoransLayer) {
+                    map.removeLayer(currentMoransLayer);
+                }
+
+                // Create new Moran's I layer
+                currentMoransLayer = L.geoJSON(data.data, {
+                    style: function(feature) {
+                        return feature.properties.style;                    },
+                    onEachFeature: function(feature, layer) {
+                        const props = feature.properties;
+                        layer.bindTooltip(
+                            `Cluster Type: ${props.cluster_type}<br>` +
+                            `Z-Score: ${props.z_score.toFixed(3)}<br>` +
+                            `P-Value: ${props.p_value.toFixed(3)}` +
+                            (props.weight ? `<br>Weight Sum: ${props.weight.toFixed(2)}` : '')
+                        );
+                    }
+                }).addTo(map);
+
+                // Show layer controls
+                document.getElementById('morans-layer-control').style.display = 'block';
+
+                // Update analysis info
+                document.getElementById('analysis-info').innerHTML = `
+                    <strong>Local Moran's I Analysis</strong><br>
+                    Type: ${analysisType === 'weighted' ? 'Weighted Analysis' : 'Point Count'}<br>
+                    Purpose: Identify spatial clusters and outliers.<br>                    Legend:<br>
+                    - HH (Red): High values surrounded by high values<br>                    - LL (Blue): Low values surrounded by low values<br>
+                    - HL (Yellow): High values surrounded by low values<br>
+                    - LH (Purple): Low values surrounded by high values
+                `;
+
+            } catch (error) {
+                console.error('Error generating Local Moran\'s I:', error);
+                alert('Error generating Local Moran\'s I: ' + error.message);
+            }
+        });        // Add Moran's I visibility toggle
+        document.getElementById('morans-visibility').addEventListener('click', function() {
+            const icon = this;
+            if (currentMoransLayer) {
+                if (icon.classList.contains('fa-eye')) {
+                    icon.classList.replace('fa-eye', 'fa-eye-slash');
+                    map.removeLayer(currentMoransLayer);
+                } else {
+                    icon.classList.replace('fa-eye-slash', 'fa-eye');
+                    map.addLayer(currentMoransLayer);
+                }
+            }
+        });
+
+        // Update Moran's I opacity handler
+        document.getElementById('morans-opacity').addEventListener('input', function(event) {
+            const opacity = parseFloat(event.target.value);
+            if (currentMoransLayer) {
+                currentMoransLayer.setStyle({ fillOpacity: opacity });
+            }
+        });
+
+        // Update heatmap opacity handler
+        document.getElementById('heatmap-opacity').addEventListener('input', function(event) {
+            const opacity = parseFloat(event.target.value);
+            if (currentHeatmapLayer) {
+                currentHeatmapLayer.setOptions({
+                    minOpacity: opacity * 0.3,
+                    maxOpacity: opacity
+                });
+            }
+        });
+
+        // Update analysis info based on selected type
+        document.getElementById('generate-heatmap').addEventListener('click', function() {
+            document.getElementById('analysis-info').innerHTML = `
+                <strong>Heatmap Analysis</strong><br>
+                Purpose: Visualize the density of point locations to identify areas of concentration.<br>
+                Methodology: Creates a continuous surface showing point density using a kernel density estimation.<br>
+                Limitations: Best suited for large datasets; may not show meaningful patterns with few points.
+            `;
+        });
+
+        // K-means handler with null checks
+        // Add these functions for DataTables management
+        let clusterSummaryTable = null;
+        let pointsDetailTable = null;
+
+        function initializeKMeansTables() {
+            // Destroy existing tables if they exist
+            if (clusterSummaryTable) {
+                clusterSummaryTable.destroy();
+            }
+            if (pointsDetailTable) {
+                pointsDetailTable.destroy();
+            }
+
+            // Initialize new tables
+            clusterSummaryTable = $('#cluster-summary-table').DataTable({
+                dom: 'Bfrtip',
+                buttons: ['csv', 'excel'],
+                destroy: true
+            });
+            pointsDetailTable = $('#points-detail-table').DataTable({
+                dom: 'Bfrtip',
+                buttons: ['csv', 'excel'],
+                destroy: true
+            });
+        }
+
+        // Update K-means clustering handler
+        document.getElementById('generate-kmeans').addEventListener('click', async () => {
+            try {
+                const nClusters = document.getElementById('kmeans-clusters').value;
+                const response = await fetch('/api/analysis/kmeans', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ n_clusters: parseInt(nClusters) })
+                });
+
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+
+                if (data.success) {
+                    // Enable export buttons
+                    document.getElementById('export-points-csv').disabled = false;
+                    document.getElementById('export-points-geojson').disabled = false;
+
+                    // Update cluster summary table
+                    const clusterSummary = document.getElementById('cluster-summary');
+                    clusterSummary.innerHTML = data.data.clusters.map(cluster => `
+                        <tr>
+                            <td>${cluster.cluster_id}</td>
+                            <td>${cluster.points_count}</td>
+                            <td>${cluster.center_lat.toFixed(6)}</td>
+                            <td>${cluster.center_lon.toFixed(6)}</td>
+                            <td>${cluster.avg_weight ? cluster.avg_weight.toFixed(2) : 'N/A'}</td>
+                        </tr>
+                    `).join('');
+
+                    // Update points detail table
+                    const pointsDetail = document.getElementById('points-detail');
+                    pointsDetail.innerHTML = data.data.points.map(point => `
+                        <tr>
+                            <td>${point.point_id}</td>
+                            <td>${point.latitude.toFixed(6)}</td>
+                            <td>${point.longitude.toFixed(6)}</td>
+                            <td>${point.cluster}</td>
+                            <td>${point.weight ? point.weight.toFixed(2) : 'N/A'}</td>
+                        </tr>
+                    `).join('');
+
+                    // Initialize tables with sorting and export functionality
+                    initializeKMeansTables();
+
+                    // Update map with clusters
+                    if (currentKmeansLayer) {
+                        map.removeLayer(currentKmeansLayer);
+                    }
+                    // Create new layer group for K-means clusters
+                    currentKmeansLayer = L.layerGroup();
+
+                    // Get current opacity value
+                    const opacity = parseFloat(document.getElementById('kmeans-opacity').value) || 1;
+
+                    // Add points with cluster colors
+                    data.data.points.forEach(point => {
+                        const clusterColor = clusterColors[point.cluster % clusterColors.length];
+                        L.circleMarker([point.latitude, point.longitude], {
+                            radius: 8,
+                            fillColor: clusterColor,
+                            color: clusterColor,
+                            weight: 1,
+                            opacity: 1,
+                            fillOpacity: opacity
+                        }).bindPopup(`
+                            Point ID: ${point.point_id + 1}<br>
+                            Cluster: ${point.cluster + 1}<br>
+                            Weight: ${point.weight ? point.weight.toFixed(2) : 'N/A'}
+                        `).addTo(currentKmeansLayer);
+                    });
+
+                    // Add cluster centers
+                    data.data.clusters.forEach((cluster, index) => {
+                        const clusterColor = clusterColors[index % clusterColors.length];
+                        L.circleMarker([cluster.center_lat, cluster.center_lon], {
+                            radius: 12,
+                            fillColor: clusterColor,
+                            color: '#000',
+                            weight: 2,
+                            opacity: 1,
+                            fillOpacity: opacity,
+                            className: 'cluster-center'
+                        }).bindPopup(`
+                            Cluster ${index + 1} Center<br>
+                            Points: ${cluster.points_count}<br>
+                            Avg Weight: ${cluster.avg_weight ? cluster.avg_weight.toFixed(2) : 'N/A'}
+                        `).addTo(currentKmeansLayer);
+                    });
+
+                    // Add the layer to the map
+                    currentKmeansLayer.addTo(map);
+
+                    // Show layer control
+                    document.getElementById('kmeans-layer-control').style.display = 'block';
+
+                    // Store the data for export
+                    window.kmeansData = data.data;
+                }
+            } catch (error) {
+                console.error('Error generating K-means clusters:', error);
+                alert('Error generating K-means clusters: ' + error.message);
+            }
+        });
+
+        // Add export handlers for K-means results
+        document.getElementById('export-points-csv').addEventListener('click', () => {
+            if (!window.kmeansData) return;
+
+            const timestamp = new Date().getTime();
+            const csvContent = 'Point ID,Latitude,Longitude,Cluster,Weight\n' +
+                window.kmeansData.points.map(point => 
+                    `${point.point_id + 1},${point.latitude},${point.longitude},${point.cluster + 1},${point.weight || 'N/A'}`
+                ).join('\n');
+
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `points_detail_${timestamp}.csv`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+        });
+
+        document.getElementById('export-points-geojson').addEventListener('click', () => {
+            if (!window.kmeansData) return;
+
+            const timestamp = new Date().getTime();
+            const geojson = {
+                type: 'FeatureCollection',
+                features: window.kmeansData.points.map(point => ({
+                    type: 'Feature',
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [point.longitude, point.latitude]
+                    },
+                    properties: {
+                        point_id: point.point_id + 1,
+                        cluster: point.cluster + 1,
+                        weight: point.weight || null
+                    }
+                }))
+            };
+
+            const blob = new Blob([JSON.stringify(geojson, null, 2)], { type: 'application/json' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `points_detail_${timestamp}.geojson`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+        });
+
+        // Add K-means visibility toggle handler
+        document.getElementById('kmeans-visibility').addEventListener('click', function() {
+            const icon = this;
+            const isVisible = icon.classList.contains('fa-eye');
+
+            if (isVisible) {
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+                if (currentKmeansLayer) {
+                    map.removeLayer(currentKmeansLayer);
+                }
+            } else {
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+                if (currentKmeansLayer) {
+                    map.addLayer(currentKmeansLayer);
+                }
+            }
+        });
+
+        // Add K-means opacity handler
+        document.getElementById('kmeans-opacity').addEventListener('input', function() {
+            const opacity = parseFloat(this.value);
+            if (currentKmeansLayer) {
+                currentKmeansLayer.eachLayer((layer) => {
+                    if (layer instanceof L.CircleMarker) {
+                        layer.setStyle({ fillOpacity: opacity });
+                    }
+                });
+            }
+        });
+
+        // Add H3 Grid visibility toggle handler
+        document.getElementById('h3-grid-visibility').addEventListener('click', function() {
+            const icon = this;
+            if (currentH3Layer) {
+                if (icon.classList.contains('fa-eye')) {
+                    icon.classList.replace('fa-eye', 'fa-eye-slash');
+                    map.removeLayer(currentH3Layer);
+                } else {
+                    icon.classList.replace('fa-eye-slash', 'fa-eye');
+                    map.addLayer(currentH3Layer);
+                }
+            }
+        });
+
+        // Add Constrained Clustering visibility toggle handler
+        document.getElementById('constrained-visibility').addEventListener('click', function() {
+            const icon = this;
+            if (currentConstrainedLayer) {
+                if (icon.classList.contains('fa-eye')) {
+                    icon.classList.replace('fa-eye', 'fa-eye-slash');
+                    map.removeLayer(currentConstrainedLayer);
+                } else {
+                    icon.classList.replace('fa-eye-slash', 'fa-eye');
+                    map.addLayer(currentConstrainedLayer);
+                }
+            }
+        });
+
+        // H3 Grid generation
+        document.getElementById('generate-h3-grid').addEventListener('click', async () => {
+            if (!currentMarkerCluster) {
+                alert('Please upload point data first');
+                return;
+            }
+
+            try {
+                const resolution = document.getElementById('h3-resolution').value;
+                const response = await fetch('/api/analysis/h3-hexagons', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        resolution: parseInt(resolution)
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                if (data.success) {
+                    // Remove existing H3 layer if any
+                    if (currentH3Layer) {
+                        map.removeLayer(currentH3Layer);
+                    }
+
+                    // Create new H3 layer
+                    currentH3Layer = L.geoJSON(data.data, {
+                        style: function(feature) {
+                            return feature.properties.style;
+                        },
+                        onEachFeature: function(feature, layer) {
+                            layer.bindTooltip(
+                                `Points: ${feature.properties.point_count}<br>` +
+                                `${feature.properties.avg_weight ? 'Avg Weight: ' + feature.properties.avg_weight.toFixed(2) : ''}`
+                            );
+                        }
+                    }).addTo(map);
+
+                    // Show the layer control
+                    document.getElementById('h3-grid-layer-control').style.display = 'block';
+
+                    // Update analysis info
+                    document.getElementById('analysis-info').innerHTML = `
+                        <strong>H3 Hexagonal Grid Analysis</strong><br>
+                        Resolution: ${resolution}<br>
+                        Purpose: Visualize point density using hexagonal bins<br>
+                        Darker colors indicate higher point density
+                    `;
+                }
+            } catch (error) {
+                console.error('Error generating H3 grid:', error);
+                alert('Error generating H3 grid: ' + error.message);
+            }
+        });
+
+        // Constrained clustering generation
+        document.getElementById('generate-constrained').addEventListener('click', async () => {
+            if (!currentMarkerCluster) {
+                alert('Please upload point data first');
+                return;
+            }
+
+            try {
+                const nClusters = document.getElementById('constrained-clusters').value;
+                const useWeights = document.getElementById('use-weights').checked;
+                const resolution = document.getElementById('h3-resolution').value;
+
+                const response = await fetch('/api/analysis/constrained-clustering', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        resolution: parseInt(resolution),
+                        n_clusters: parseInt(nClusters),
+                        use_weights: useWeights
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                if (data.success) {
+                    // Remove existing constrained layer if any
+                    if (currentConstrainedLayer) {
+                        map.removeLayer(currentConstrainedLayer);
+                    }
+
+                    // Create new constrained layer
+                    currentConstrainedLayer = L.geoJSON(data.data, {
+                        style: function(feature) {
+                            return feature.properties.style;
+                        },
+                        onEachFeature: function(feature, layer) {
+                            layer.bindTooltip(
+                                `Cluster: ${feature.properties.cluster + 1}<br>` +
+                                `Points: ${feature.properties.point_count}<br>` +
+                                `${feature.properties.avg_weight ? 'Avg Weight: ' + feature.properties.avg_weight.toFixed(2) : ''}`
+                            );
+                        }
+                    }).addTo(map);
+
+                    // Show the layer control
+                    document.getElementById('constrained-layer-control').style.display = 'block';
+
+                    // Update analysis info
+                    document.getElementById('analysis-info').innerHTML = `
+                        <strong>Constrained Clustering Analysis</strong><br>
+                        Number of Clusters: ${nClusters}<br>
+                        Using Weights: ${useWeights ? 'Yes' : 'No'}<br>
+                        Purpose: Create contiguous spatial clusters<br>
+                        Each color represents a different cluster
+                    `;
+                }
+            } catch (error) {
+                console.error('Error generating constrained clusters:', error);
+                alert('Error generating constrained clusters: ' + error.message);
+            }
+        });
+
+        // Add opacity controls for new layers
+        ['h3-grid-opacity', 'constrained-opacity'].forEach(id => {
+            document.getElementById(id).addEventListener('input', event => {
+                const opacity = parseFloat(event.target.value);
+                const layerType = id.split('-')[0];
+
+                if (layerType === 'h3' && currentH3Layer) {
+                    currentH3Layer.setStyle({ fillOpacity: opacity });
+                } else if (layerType === 'constrained' && currentConstrainedLayer) {
+                    currentConstrainedLayer.setStyle({ fillOpacity: opacity });
+                }
+            });
+        });
+        // Add these functions at the beginning of your script section
+        function destroyDataTableIfExists(tableId) {
+            var table = $('#' + tableId).DataTable();
+            if ($.fn.DataTable.isDataTable('#' + tableId)) {
+                table.destroy();
+            }
+        }
+
+        // Update H3 Grid generation handler
+        document.getElementById('generate-h3-grid').addEventListener('click', async () => {
+            try {
+                const resolution = document.getElementById('h3-resolution').value;
+                const response = await fetch('/api/analysis/h3-hexagons', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ resolution: parseInt(resolution) })
+                });
+
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+
+                if (data.success) {
+                    // Enable export button after successful generation
+                    document.getElementById('export-h3-geojson').disabled = false;
+
+                    // Update map with hexagons
+                    if (currentH3Layer) {
+                        map.removeLayer(currentH3Layer);
+                    }
+                    currentH3Layer = L.geoJSON(data.data, {
+                        style: (feature) => feature.properties.style
+                    }).addTo(map);
+
+                    // Show layer control
+                    document.getElementById('h3-grid-layer-control').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error generating H3 grid:', error);
+                alert('Error generating H3 grid: ' + error.message);
+            }
+        });
+
+        // Update Constrained Clustering handler
+        document.getElementById('generate-constrained').addEventListener('click', async () => {
+            try {
+                const nClusters = document.getElementById('constrained-clusters').value;
+                const useWeights = document.getElementById('use-weights').checked;
+
+                const response = await fetch('/api/analysis/constrained-clustering', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        n_clusters: parseInt(nClusters),
+                        use_weights: useWeights
+                    })
+                });
+
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+
+                if (data.success) {
+                    // Enable export button after successful generation
+                    document.getElementById('export-constrained-geojson').disabled = false;
+
+                    // Update map with clusters
+                    if (currentConstrainedLayer) {
+                        map.removeLayer(currentConstrainedLayer);
+                    }
+                    currentConstrainedLayer = L.geoJSON(data.data, {
+                        style: (feature) => feature.properties.style
+                    }).addTo(map);
+
+                    // Show layer control
+                    document.getElementById('constrained-layer-control').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error generating constrained clusters:', error);
+                alert('Error generating constrained clusters: ' + error.message);
+            }
+        });
+
+        // Add export handlers for H3 and Constrained Clustering
+        document.getElementById('export-h3-geojson').addEventListener('click', async () => {
+            if (currentH3Layer) {
+                const geojson = currentH3Layer.toGeoJSON();
+                downloadGeoJSON(geojson, 'h3_hexagons.geojson');
+            }
+        });
+
+        document.getElementById('export-constrained-geojson').addEventListener('click', async () => {
+            if (currentConstrainedLayer) {
+                const geojson = currentConstrainedLayer.toGeoJSON();
+                downloadGeoJSON(geojson, 'constrained_clusters.geojson');
+            }
+        });
+
+        function downloadGeoJSON(geojson, filename) {
+            const blob = new Blob([JSON.stringify(geojson, null, 2)], { type: 'application/json' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+        function createPointPopup(feature) {
+            let popupContent = '<div class="point-popup">';
+            // Add all properties to popup
+            for (let prop in feature.properties) {
+                if (feature.properties.hasOwnProperty(prop)) {
+                    popupContent += `<strong>${prop}:</strong> ${feature.properties[prop]}<br>`;
+                }
+            }
+            popupContent += '</div>';
+            return popupContent;
+        }
+        // Custom clustering function
+        function createClusters(points, eps, minPts) {
+            const visited = new Set();
+            const clusters = [];
+
+            function distance(p1, p2) {
+                return Math.sqrt(
+                    Math.pow(p1.geometry.coordinates[0] - p2.geometry.coordinates[0], 2) +
+                    Math.pow(p1.geometry.coordinates[1] - p2.geometry.coordinates[1], 2)
+                );
+            }
+
+            function neighbors(point) {
+                return points.filter(p => distance(point, p) <= eps);
+            }
+
+            function expandCluster(point, nearbyNeighbors, cluster) {
+                cluster.push(point);
+                visited.add(point);
+
+                nearbyNeighbors.forEach(function (neighbor) {
+                    if (!visited.has(neighbor)) {
+                        visited.add(neighbor);
+                        const newNeighbors = neighbors(neighbor);
+                        if (newNeighbors.length >= minPts) {
+                            expandCluster(neighbor, newNeighbors, cluster);
+                        }
+                    }
+                });
+            }
+
+            points.forEach(function (point) {
+                if (!visited.has(point)) {
+                    const nearby = neighbors(point);
+                    if (nearby.length >= minPts) {
+                        const cluster = [];
+                        expandCluster(point, nearby, cluster);
+                        clusters.push(cluster);
+                    } else {
+                        clusters.push([point]); // Single point cluster
+                    }
+                }
+            });
+
+            return clusters;
+        }
+    </script>
+    <script>
+        // Store Moran's I results globally
+        let moransResults = null;
+
+        // Update the existing Moran's I handler to store results
+        document.getElementById('generate-morans').addEventListener('click', async () => {
+            try {
+                const analysisType = document.getElementById('morans-type').value;
+                const response = await fetch('/api/analysis/morans', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        analysis_type: analysisType
+                    })
+                });
+
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+
+                if (data.success) {
+                    moransResults = data.data; // Store the results
+                    // Enable export button
+                    document.getElementById('export-morans-geojson').disabled = false;
+                    // Rest of your existing code...
+                    // Remove existing Moran's I layer if any
+                    if (currentMoransLayer) {
+                        map.removeLayer(currentMoransLayer);
+                    }
+
+                    // Create new Moran's I layer
+                    currentMoransLayer = L.geoJSON(data.data, {
+                        style: function(feature) {
+                            return feature.properties.style;                    },
+                        onEachFeature: function(feature, layer) {
+                            const props = feature.properties;
+                            layer.bindTooltip(
+                                `Cluster Type: ${props.cluster_type}<br>` +
+                                `Z-Score: ${props.z_score.toFixed(3)}<br>` +                                `P-Value: ${props.p_value.toFixed(3)}` +
+                                (props.weight ? `<br>Weight Sum: ${props.weight.toFixed(2)}` : '')
+                            );
+                        }
+                    }).addTo(map);
+
+                    // Show layer controls
+                    document.getElementById('morans-layer-control').style.display = 'block';
+
+                    // Update analysis info
+                    document.getElementById('analysis-info').innerHTML = `
+                        <strong>Local Moran's I Analysis</strong><br>
+                        Type: ${analysisType === 'weighted' ? 'Weighted Analysis' : 'Point Count'}<br>
+                        Purpose: Identify spatial clusters and outliers.<br>                    Legend:<br>
+                        - HH (Red): High values surrounded by high values<br>                    - LL (Blue): Low values surrounded by low values<br>
+                        - HL (Yellow): High values surrounded by low values<br>
+                        - LH (Purple): Low values surrounded by high values
+                    `;
+                }
+            } catch (error) {
+                console.error('Error generating Local Moran\'s I:', error);
+                alert('Error generating Local Moran\'s I: ' + error.message);
+            }
+        });
+
+        // Add export handler for Moran's I results
+        document.getElementById('export-morans-geojson').addEventListener('click', () => {
+            if (!moransResults) return;
+
+            const timestamp = new Date().getTime();
+            const date = new Date().toISOString().split('T')[0];
+
+            // Add metadata to the GeoJSON
+            const exportData = {
+                type: "FeatureCollection",
+                metadata: {
+                    description: "Local Moran's I Spatial Analysis Results",
+                    date: date,
+                    timestamp: timestamp,
+                    analysis_type: document.getElementById('morans-type').value,
+                    statistics: {
+                        total_features: moransResults.features.length,
+                        analysis_date: new Date().toISOString()
+                    }
+                },
+                features: moransResults.features.map(feature => ({
+                    ...feature,
+                    properties: {
+                        ...feature.properties,
+                        analysis_date: date,
+                        analysis_type: document.getElementById('morans-type').value
+                    }
+                }))
+            };
+
+            const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `morans_i_analysis_${timestamp}.geojson`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            // Initialize all tooltips
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+    <script>
+            // High contrast state management
+            document.addEventListener('DOMContentLoaded', function() {
+                const highContrastCheckbox = document.getElementById('high-contrast-mode');
+
+                // Initialize high contrast mode from server state
+                const isHighContrast = {{ high_contrast|tojson }};
+                if (isHighContrast) {
+                    highContrastCheckbox.checked = true;
+                    document.body.classList.add('high-contrast-theme');
+                    updateMapTheme(true);
+                }
+
+                // Handle high contrast toggle
+                highContrastCheckbox.addEventListener('change', async function(e) {
+                    const isHighContrast = e.target.checked;
+
+                    // Update UI
+                    document.body.classList.toggle('high-contrast-theme', isHighContrast);
+                    updateMapTheme(isHighContrast);
+
+                    // Save preference to server
+                    try {
+                        const response = await fetch('/api/preferences/accessibility', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                high_contrast: isHighContrast
+                            })
+                        });
+
+                        if (!response.ok) {
+                            console.error('Failed to save accessibility preferences');
+                        }
+                    } catch (error) {
+                        console.error('Error saving accessibility preferences:', error);
+                    }
+                });
+            });
+        </script>
+</body>
+</html>

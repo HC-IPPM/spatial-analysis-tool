@@ -1,0 +1,2494 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430291",
+        "address": "38 Kings Lynn Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.651748,
+        "longitude": -79.505704
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.505704,
+          43.651748
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430287",
+        "address": "44 Balsam Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.671274,
+        "longitude": -79.289949
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.289949,
+          43.671274
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430288",
+        "address": "116 Kilbarry Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.693952,
+        "longitude": -79.410406
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.410406,
+          43.693952
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430289",
+        "address": "92 Sarah Ashbridge Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.666963,
+        "longitude": -79.309046
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.309046,
+          43.666963
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430290",
+        "address": "40 Bayview Ridge, Toronto, ON",
+        "confidence": 0.8,
+        "matchType": "interpolated",
+        "accuracy": "point",
+        "latitude": 43.7422734,
+        "longitude": -79.3882182
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.3882182,
+          43.7422734
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430292",
+        "address": "26 Harshaw Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.655279,
+        "longitude": -79.488536
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.488536,
+          43.655279
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430293",
+        "address": "621 King Street West, Frontenac, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 44.221093,
+        "longitude": -76.516388
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.516388,
+          44.221093
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430296",
+        "address": "137 Strathallan Boulevard, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.713306,
+        "longitude": -79.418664
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.418664,
+          43.713306
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430297",
+        "address": "115 Black Creek Drive, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.687837,
+        "longitude": -79.482014
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.482014,
+          43.687837
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430298",
+        "address": "891 Morningside Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.792976,
+        "longitude": -79.195354
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.195354,
+          43.792976
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430294",
+        "address": "621 King Street West, Frontenac, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 44.221093,
+        "longitude": -76.516388
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.516388,
+          44.221093
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430299",
+        "address": "14 St Ives Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.724174,
+        "longitude": -79.389749
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.389749,
+          43.724174
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430300",
+        "address": "6 Elm Avenue, Division No. 12, MB",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 50.087163,
+        "longitude": -96.661755
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.661755,
+          50.087163
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430295",
+        "address": "621 King Street West, Frontenac, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 44.221093,
+        "longitude": -76.516388
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.516388,
+          44.221093
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430302",
+        "address": "2621 Lake Shore Boulevard West, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.604693,
+        "longitude": -79.491049
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.491049,
+          43.604693
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430303",
+        "address": "1 Douglas Drive, Simcoe, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 44.157791,
+        "longitude": -79.841044
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.841044,
+          44.157791
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430301",
+        "address": "6 Elm Avenue, Division No. 12, MB",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 50.087163,
+        "longitude": -96.661755
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.661755,
+          50.087163
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430304",
+        "address": "2175 Lake Shore Boulevard West, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.624235,
+        "longitude": -79.480097
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.480097,
+          43.624235
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430305",
+        "address": "2 Strachan Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.634895,
+        "longitude": -79.409404
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.409404,
+          43.634895
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430308",
+        "address": "5 Hilldowntree Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.660809,
+        "longitude": -79.525437
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.525437,
+          43.660809
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430309",
+        "address": "2613 Lake Shore Boulevard West, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.605257,
+        "longitude": -79.490762
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.490762,
+          43.605257
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430310",
+        "address": "39 Strathallan Boulevard, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.714348,
+        "longitude": -79.413741
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.413741,
+          43.714348
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430306",
+        "address": "2 Strachan Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.634895,
+        "longitude": -79.409404
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.409404,
+          43.634895
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430311",
+        "address": "130 Bloor Street West, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.669203,
+        "longitude": -79.392799
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.392799,
+          43.669203
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430312",
+        "address": "18 Norcross Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.751533,
+        "longitude": -79.453023
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.453023,
+          43.751533
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430313",
+        "address": "71 Otter Crescent, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.719077,
+        "longitude": -79.419788
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.419788,
+          43.719077
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430307",
+        "address": "2 Strachan Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.634895,
+        "longitude": -79.409404
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.409404,
+          43.634895
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430314",
+        "address": "34 Burton Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.692918,
+        "longitude": -79.418788
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.418788,
+          43.692918
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430316",
+        "address": "6000 Leslie Street, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.800104,
+        "longitude": -79.371262
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.371262,
+          43.800104
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430317",
+        "address": "48 Arjay Crescent, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.737436,
+        "longitude": -79.384121
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.384121,
+          43.737436
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430318",
+        "address": "144 South Drive, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.677843,
+        "longitude": -79.374455
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.374455,
+          43.677843
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430319",
+        "address": "205 Glenayr Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.694952,
+        "longitude": -79.418851
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.418851,
+          43.694952
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430320",
+        "address": "100 Thompson Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.642263,
+        "longitude": -79.513023
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.513023,
+          43.642263
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430325",
+        "address": "10 Arjay Crescent, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.735729,
+        "longitude": -79.383258
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.383258,
+          43.735729
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430321",
+        "address": "100 Thompson Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.642263,
+        "longitude": -79.513023
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.513023,
+          43.642263
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430326",
+        "address": "147 Ridley Boulevard, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.737851,
+        "longitude": -79.416403
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.416403,
+          43.737851
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430322",
+        "address": "100 Thompson Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.642263,
+        "longitude": -79.513023
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.513023,
+          43.642263
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430327",
+        "address": "320 Huron Street, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.662912,
+        "longitude": -79.40043
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.40043,
+          43.662912
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430323",
+        "address": "100 Thompson Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.642263,
+        "longitude": -79.513023
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.513023,
+          43.642263
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430328",
+        "address": "20 Lausanne Crescent, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.7545,
+        "longitude": -79.189509
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.189509,
+          43.7545
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430330",
+        "address": "6 Ridgefield Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.71958,
+        "longitude": -79.383448
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.383448,
+          43.71958
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430329",
+        "address": "12 Darlingbrook Crescent, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.671332,
+        "longitude": -79.523605
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.523605,
+          43.671332
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430332",
+        "address": "45 Macpherson Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.678643,
+        "longitude": -79.391767
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.391767,
+          43.678643
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430331",
+        "address": "49 Northwood Drive, undefined, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 44.473569,
+        "longitude": -80.070055
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.070055,
+          44.473569
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430324",
+        "address": "100 Thompson Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.642263,
+        "longitude": -79.513023
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.513023,
+          43.642263
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430333",
+        "address": "1 Austin Terrace, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.678122,
+        "longitude": -79.409527
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.409527,
+          43.678122
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430335",
+        "address": "119 Stratford Crescent, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.720844,
+        "longitude": -79.382713
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.382713,
+          43.720844
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430337",
+        "address": "252 Spring Garden Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.766844,
+        "longitude": -79.39976
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.39976,
+          43.766844
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430338",
+        "address": "51 Anewen Drive, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.733614,
+        "longitude": -79.313673
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.313673,
+          43.733614
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430336",
+        "address": "140 Antibes Drive, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.781155,
+        "longitude": -79.446977
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.446977,
+          43.781155
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430340",
+        "address": "49 Mayall Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.725711,
+        "longitude": -79.517979
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.517979,
+          43.725711
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430339",
+        "address": "52 Killdeer Crescent, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.717966,
+        "longitude": -79.363396
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.363396,
+          43.717966
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430341",
+        "address": "96 Drewry Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.786428,
+        "longitude": -79.421821
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.421821,
+          43.786428
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430342",
+        "address": "89 Caines Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.784194,
+        "longitude": -79.435414
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.435414,
+          43.784194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430343",
+        "address": "2706 Bayview Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.75907,
+        "longitude": -79.386803
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.386803,
+          43.75907
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430344",
+        "address": "88 Kelsonia Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.713127,
+        "longitude": -79.24498
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.24498,
+          43.713127
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430345",
+        "address": "15 Dundonald Street, undefined, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.154795,
+        "longitude": -79.202395
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.202395,
+          43.154795
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430347",
+        "address": "19 Lois Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.711153,
+        "longitude": -79.447442
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.447442,
+          43.711153
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430346",
+        "address": "118 Highbourne Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.701338,
+        "longitude": -79.406224
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.406224,
+          43.701338
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430348",
+        "address": "265 Yonge Boulevard, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.744412,
+        "longitude": -79.417052
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.417052,
+          43.744412
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430350",
+        "address": "67 Fleming Crescent, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.71013,
+        "longitude": -79.37482
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.37482,
+          43.71013
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430351",
+        "address": "4190 Bathurst Street, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.748575,
+        "longitude": -79.437303
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.437303,
+          43.748575
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430349",
+        "address": "22 Yewfield Crescent, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.74976,
+        "longitude": -79.345333
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.345333,
+          43.74976
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430353",
+        "address": "27 Sandringham Drive, Simcoe, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 44.360631,
+        "longitude": -79.621794
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.621794,
+          44.360631
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430352",
+        "address": "71 De Vere Gardens, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.739977,
+        "longitude": -79.411734
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.411734,
+          43.739977
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430356",
+        "address": "16 Statler Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.637483,
+        "longitude": -79.545495
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.545495,
+          43.637483
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430355",
+        "address": "144 Ridley Boulevard, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.738349,
+        "longitude": -79.416111
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.416111,
+          43.738349
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430357",
+        "address": "28 True Davidson Drive, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.692106,
+        "longitude": -79.363934
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.363934,
+          43.692106
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430358",
+        "address": "2 Yorkleigh Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.696984,
+        "longitude": -79.522258
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.522258,
+          43.696984
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430354",
+        "address": "20 Forest Ridge Drive, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.70608,
+        "longitude": -79.428712
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.428712,
+          43.70608
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430360",
+        "address": "552 Cranbrooke Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.724416,
+        "longitude": -79.427149
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.427149,
+          43.724416
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430359",
+        "address": "61 Cockburn Drive, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.785075,
+        "longitude": -79.14464
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.14464,
+          43.785075
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430361",
+        "address": "281 Snowdon Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.733096,
+        "longitude": -79.393318
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.393318,
+          43.733096
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430362",
+        "address": "215 Verobeach Boulevard, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.738555,
+        "longitude": -79.546452
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.546452,
+          43.738555
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430364",
+        "address": "33 Charnwood Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.745582,
+        "longitude": -79.356044
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.356044,
+          43.745582
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430366",
+        "address": "15 Governor's Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.691407,
+        "longitude": -79.367277
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.367277,
+          43.691407
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430363",
+        "address": "215 Verobeach Boulevard, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.738555,
+        "longitude": -79.546452
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.546452,
+          43.738555
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430367",
+        "address": "23 Shawfield Crescent, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.750544,
+        "longitude": -79.323871
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.323871,
+          43.750544
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430369",
+        "address": "8 Kingscourt Drive, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.650025,
+        "longitude": -79.502615
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.502615,
+          43.650025
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430368",
+        "address": "11 Lake Promenade, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.590491,
+        "longitude": -79.519712
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.519712,
+          43.590491
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430365",
+        "address": "215 Verobeach Boulevard, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.738555,
+        "longitude": -79.546452
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.546452,
+          43.738555
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430371",
+        "address": "43 Cheltenham Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.725078,
+        "longitude": -79.391667
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.391667,
+          43.725078
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430370",
+        "address": "33 Green Valley Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.739578,
+        "longitude": -79.390016
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.390016,
+          43.739578
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430372",
+        "address": "94 Lyndhurst Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.680088,
+        "longitude": -79.413046
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.413046,
+          43.680088
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430373",
+        "address": "7 Ardmore Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.694916,
+        "longitude": -79.415875
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.415875,
+          43.694916
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430378",
+        "address": "8 Brief Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.718356,
+        "longitude": -79.488202
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.488202,
+          43.718356
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430375",
+        "address": "760 Glengrove Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.709521,
+        "longitude": -79.451283
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.451283,
+          43.709521
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430374",
+        "address": "42 Blue Forest Drive, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.767365,
+        "longitude": -79.454961
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.454961,
+          43.767365
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430376",
+        "address": "24 Longwood Drive, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.748577,
+        "longitude": -79.361252
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.361252,
+          43.748577
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430377",
+        "address": "21 Tardree Place, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.756913,
+        "longitude": -79.301522
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.301522,
+          43.756913
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430379",
+        "address": "389 Fairlawn Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.727434,
+        "longitude": -79.419012
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.419012,
+          43.727434
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430380",
+        "address": "3 Romney Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.669159,
+        "longitude": -79.520139
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.520139,
+          43.669159
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430381",
+        "address": "24 Glen Park Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.712902,
+        "longitude": -79.430938
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.430938,
+          43.712902
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430382",
+        "address": "154 Ellerslie Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.770244,
+        "longitude": -79.420467
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.420467,
+          43.770244
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430383",
+        "address": "34 Sir Williams Lane, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.664283,
+        "longitude": -79.539761
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.539761,
+          43.664283
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430384",
+        "address": "28 Allister Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.726544,
+        "longitude": -79.236005
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.236005,
+          43.726544
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430385",
+        "address": "42 Claxton Boulevard, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.688915,
+        "longitude": -79.423597
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.423597,
+          43.688915
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430386",
+        "address": "238 Haddington Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.733056,
+        "longitude": -79.429839
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.429839,
+          43.733056
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430387",
+        "address": "9 Chelford Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.742055,
+        "longitude": -79.364219
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.364219,
+          43.742055
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430388",
+        "address": "462 Melrose Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.729157,
+        "longitude": -79.423699
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.423699,
+          43.729157
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430389",
+        "address": "97 St Leonard's Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.722363,
+        "longitude": -79.394472
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.394472,
+          43.722363
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430390",
+        "address": "41 Victoria Park Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.676319,
+        "longitude": -79.280751
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.280751,
+          43.676319
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430393",
+        "address": "101 Chestnut Hills Parkway, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.659243,
+        "longitude": -79.524715
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.524715,
+          43.659243
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430392",
+        "address": "35 Newton Drive, Dufferin, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.9062,
+        "longitude": -80.1053
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.1053,
+          43.9062
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430394",
+        "address": "106 Warren Road, Waterloo, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.429536,
+        "longitude": -80.512419
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.512419,
+          43.429536
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430391",
+        "address": "27 Belgrave Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.742903,
+        "longitude": -79.418048
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.418048,
+          43.742903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430395",
+        "address": "261 Aldercrest Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.610425,
+        "longitude": -79.542494
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.542494,
+          43.610425
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430396",
+        "address": "17 Karen Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.762067,
+        "longitude": -79.339238
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.339238,
+          43.762067
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430398",
+        "address": "2 Summerside Crescent, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.796649,
+        "longitude": -79.368285
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.368285,
+          43.796649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430399",
+        "address": "18 Windham Drive, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.777856,
+        "longitude": -79.384041
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.384041,
+          43.777856
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430397",
+        "address": "178 Kingsview Boulevard, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.693897,
+        "longitude": -79.566265
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.566265,
+          43.693897
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430400",
+        "address": "60 Waverley Road, undefined, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.907895,
+        "longitude": -78.694922
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.694922,
+          43.907895
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430401",
+        "address": "21 Bainbridge Avenue, Ottawa, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 45.331074,
+        "longitude": -75.777458
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.777458,
+          45.331074
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430402",
+        "address": "113 Waterloo Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.75802,
+        "longitude": -79.446392
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.446392,
+          43.75802
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430403",
+        "address": "29 Silverton Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.742447,
+        "longitude": -79.439682
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.439682,
+          43.742447
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430405",
+        "address": "3 Nipissing Drive, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.640056,
+        "longitude": -79.55424
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.55424,
+          43.640056
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430404",
+        "address": "25 Edgevalley Drive, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.667474,
+        "longitude": -79.517996
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.517996,
+          43.667474
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430406",
+        "address": "42 Aldershot Crescent, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.753537,
+        "longitude": -79.40052
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.40052,
+          43.753537
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430407",
+        "address": "53 Bannockburn Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.732758,
+        "longitude": -79.425004
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.425004,
+          43.732758
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430408",
+        "address": "572 Fairlawn Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.725394,
+        "longitude": -79.430401
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.430401,
+          43.725394
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430412",
+        "address": "71 Plymbridge Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.740806,
+        "longitude": -79.396796
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.396796,
+          43.740806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430410",
+        "address": "29 Ridelle Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.706326,
+        "longitude": -79.429534
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.429534,
+          43.706326
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430413",
+        "address": "121 Ava Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.696859,
+        "longitude": -79.428519
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.428519,
+          43.696859
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430409",
+        "address": "59 Forest Heights Boulevard, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.759083,
+        "longitude": -79.380785
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.380785,
+          43.759083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430414",
+        "address": "117 Ridley Boulevard, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.73778,
+        "longitude": -79.413869
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.413869,
+          43.73778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430416",
+        "address": "294 Brooke Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.732613,
+        "longitude": -79.423446
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.423446,
+          43.732613
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430418",
+        "address": "62 Mattice Avenue, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.646642,
+        "longitude": -79.539861
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.539861,
+          43.646642
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430415",
+        "address": "212 Dunvegan Road, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.697785,
+        "longitude": -79.410967
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.410967,
+          43.697785
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430419",
+        "address": "38 Grand Magazine Street, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.637315,
+        "longitude": -79.402945
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.402945,
+          43.637315
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430417",
+        "address": "28 Courtsfield Crescent, Peel, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.702903,
+        "longitude": -79.816026
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.816026,
+          43.702903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "inputID": "430420",
+        "address": "199 Shaver Avenue North, Toronto, ON",
+        "confidence": 1,
+        "matchType": "exact",
+        "accuracy": "point",
+        "latitude": 43.647489,
+        "longitude": -79.551031
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.551031,
+          43.647489
+        ]
+      }
+    }
+  ]
+}

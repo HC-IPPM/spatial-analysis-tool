@@ -1,0 +1,59 @@
+Now we have to build the hexagons polygons covering São Paulo city. There are three steps to build the hexagons:
+STEP 01: Get hexagon’s indexes that are contained inside census tract polygons.
+STEP 02: Convert from bigger aperture to a smaller aperture (see comment below).
+STEP 03: Create hexagons Polygon from hexagon’s indexes.
+# ========================
+# STEP 01
+# ========================
+
+# Initial Aperture size
+INITIAL_APERTURE_SIZE = 10
+
+# Final Aperture size
+FINAL_APERTURE_SIZE = 8
+
+# Empty list to be populated with hexagon's indexes
+hex_list = []
+
+# Iterate over census tract geometries to get hexagon's indexes
+for n,g in enumerate(df_census_tract['geometry'].explode(ignore_index=True)):
+
+    # Get GeoJson from geometry
+    temp  = mapping(g)
+
+    # Get coordinates of geometry from the GeoJson
+    temp['coordinates']=[[[j[1],j[0]] for j in i] for i in temp['coordinates']]  
+
+    # Fills the polygon with hexagons that are contained by the GeoJSON-like data structure.
+    hex_list.extend(h3.polyfill(geojson=temp, res=INITIAL_APERTURE_SIZE))
+
+# ========================
+# STEP 02
+# ========================
+
+# Column name with the aperture size
+initial_hex_col = 'hex{}'.format(INITIAL_APERTURE_SIZE)
+final_hex_col = 'hex{}'.format(FINAL_APERTURE_SIZE)
+
+# Creating DataFrame with hexagon's indexes
+df_hex = gpd.GeoDataFrame(hex_list,columns=[initial_hex_col])
+
+# Convert to aperture 8
+df_hex[final_hex_col] = df_hex[initial_hex_col].apply(lambda x: h3.h3_to_parent(x, 8))
+
+# Dropping columns with original aperture
+df_hex.drop(columns=[initial_hex_col], inplace=True)
+
+# ========================
+# STEP 03
+# ========================
+# Creating Hexagon polygons based on Hexagons indexes
+df_hex['hex_polygon'] = df_hex[final_hex_col].apply(lambda x: Polygon(h3.h3_to_geo_boundary(x, geo_json=True)))
+
+# Setting GeoDataFrame Geometry
+df_hex.set_geometry('hex_polygon', crs=df_census_tract.crs, inplace=True)
+
+# Drop Duplicated hexagons caused when we converted aperture
+df_hex.drop_duplicates(inplace=True)
+
+df_hex.head()

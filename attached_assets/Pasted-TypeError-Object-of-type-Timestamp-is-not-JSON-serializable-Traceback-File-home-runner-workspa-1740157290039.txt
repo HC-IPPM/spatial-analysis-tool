@@ -1,0 +1,48 @@
+TypeError: Object of type Timestamp is not JSON serializable
+Traceback:
+File "/home/runner/workspace/app/main.py", line 100, in <module>
+    main()
+File "/home/runner/workspace/app/main.py", line 83, in main
+    st_folium(m, width=800, height=600)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/streamlit_folium/__init__.py", line 285, in st_folium
+    folium_map.render()
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/folium/folium.py", line 417, in render
+    super().render(**kwargs)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/folium/elements.py", line 27, in render
+    super().render(**kwargs)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/branca/element.py", line 736, in render
+    element.render(**kwargs)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/folium/map.py", line 90, in render
+    super().render(**kwargs)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/branca/element.py", line 736, in render
+    element.render(**kwargs)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/folium/features.py", line 848, in render
+    super().render()
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/folium/map.py", line 90, in render
+    super().render(**kwargs)
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/branca/element.py", line 733, in render
+    figure.script.add_child(Element(script(self, kwargs)), name=self.get_name())
+                                    ^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/runtime.py", line 770, in __call__
+    return self._invoke(arguments, autoescape)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/runtime.py", line 784, in _invoke
+    rv = self._func(*arguments)
+         ^^^^^^^^^^^^^^^^^^^^^^
+File "<template>", line 261, in macro
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/filters.py", line 1726, in do_tojson
+    return htmlsafe_json_dumps(value, dumps=dumps, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/.pythonlibs/lib/python3.11/site-packages/jinja2/utils.py", line 669, in htmlsafe_json_dumps
+    dumps(obj, **kwargs)
+File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/json/encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/json/encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+File "/nix/store/clx0mcir7qw8zk36zbr4jra789g3knf6-python3-3.11.10/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '

@@ -1,0 +1,35 @@
+For a front-end web application implementing K-means clustering, there are several parameters and settings that you can allow users to adjust or input to control the clustering behavior. These parameters typically help in customizing how the algorithm processes the data and how the results are displayed. Below are some key parameters you might consider including:
+
+1. Number of Clusters (K)
+Description: The user can specify how many clusters the algorithm should generate.
+Parameter Name: k
+Type: Integer input (slider or input box)
+2. Max Iterations
+Description: This controls the maximum number of iterations the K-means algorithm will run before stopping.
+Parameter Name: maxIterations
+Type: Integer input (slider or input box)
+3. Initialization Method
+Description: Allows the user to select how the initial centroids should be chosen. Common methods include:
+Random
+K-means++
+Parameter Name: initMethod
+Type: Dropdown or radio button (select one option)
+4. Distance Metric
+Description: Users can choose the type of distance metric to use, which could affect how the clusters are formed. Common choices include:
+Euclidean Distance
+Manhattan Distance
+Cosine Similarity (for text data)
+Parameter Name: distanceMetric
+Type: Dropdown (select one option)
+5. Convergence Tolerance
+Description: This parameter determines when the algorithm should stop, based on how much the centroids change between iterations. A smaller tolerance means the algorithm will run longer, seeking more precise convergence.
+Parameter Name: convergenceTolerance
+Type: Float input (slider or input box)
+6. Data Normalization/Standardization
+Description: Allows the user to choose whether to normalize or standardize the data before running K-means clustering, which can significantly impact results.
+Parameter Name: normalizeData
+Type: Checkbox (to enable or disable)
+7. Seed for Random Initialization
+Description: Let the user set a seed for the random initialization of centroids. This ensures reproducibility of the results.
+Parameter Name: randomSeed
+Type: Integer input (optional)
