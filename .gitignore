@@ -1,3 +1,4 @@
 **/repl_nix_workspace.egg-info/*
 venv
 **/**.cpython-312.pyc
+uv.lock
