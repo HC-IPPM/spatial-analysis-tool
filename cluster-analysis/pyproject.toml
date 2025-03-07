@@ -7,6 +7,7 @@ dependencies = [
     "folium>=0.19.4",
     "pandas>=2.2.3",
     "geopandas>=1.0.1",
+    "gunicorn>=23.0.0",
     "openai>=1.63.2",
     "trafilatura>=2.0.0",
     "twilio>=9.4.6",

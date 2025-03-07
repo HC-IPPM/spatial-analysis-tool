@@ -12,3 +12,7 @@ dependencies = [
     "trafilatura>=2.0.0",
     "twilio>=9.4.4",
 ]
+
+
+[tool.setuptools]
+packages = ["attached_assets", "static", "templates"]

@@ -1,11 +1,12 @@
-# Cluster Analysis
+# Geospatial Intersector
 
 ## Run with Docker 
 
 ```
-docker build -t cluster-analysis .
-docker run --rm -p 5000:5000 cluster-analysis
+docker build -t geospatial-intersector .
+docker run --rm -p 5000:5000 -e FLASK_DEBUG=1 -e FLASK_ENV=development geospatial-intersector
 ```
+(or docker run --rm -p 5000:5000 geospatial-intersector for without logs)
 
 ## Run without Docker
 
@@ -24,6 +25,6 @@ pdm install -v
 
 3. Run 
 ```
-export FLASK_APP=app.app
+export FLASK_APP=main
 pdm run flask run
 ```
