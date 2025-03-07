@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map App - Buffer and Intersect with Socioeconomic Data</title>
+  
+  <!-- Leaflet and Esri styles -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+  <!-- Leaflet and Esri scripts -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-ajax/dist/leaflet.ajax.min.js"></script>
+  <script src="https://unpkg.com/leaflet-esri/dist/leaflet-esri.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <script src="https://unpkg.com/esri-leaflet"></script>
+</head>
+<body>
+
+  <h3>Map App - Buffer and Intersect with Socioeconomic Data</h3>
+
+  <!-- Map container -->
+  <div id="map" style="width: 100%; height: 500px;"></div>
+  
+  <!-- FeatureService Selection Dropdown -->
+  <label for="featureServiceDropdown">Select FeatureService:</label>
+  <select id="featureServiceDropdown">
+    <option value="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/StatCan/cd_socioeconomic_variables_2016_en/MapServer/9">Median Income 2015</option>
+    
+    <option value="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/StatCan/cd_socioeconomic_variables_2016_en/MapServer/4">Socioeconomic Variables: Education</option>
+  </select>
+
+  <!-- File Upload Input -->
+  <label for="fileInput">Upload CSV or GeoJSON:</label>
+  <input type="file" id="fileInput" accept=".csv,.geojson" />
+
+  <!-- Buffer Distance Slider -->
+  <label for="bufferSlider">Buffer Distance (km): <span id="bufferValue">0</span></label>
+  <input type="range" id="bufferSlider" min="0" max="50" value="0" step="1" />
+  
+  <!-- Dropdown for selecting FeatureService attributes -->
+  <label for="attribute-select">Select an Attribute to Query:</label>
+  <select id="attribute-select">
+      <option value="">-- Select an Attribute --</option>
+  </select>
+
+  <!-- Button to trigger the buffer/intersect analysis -->
+  <button id="run-analysis">Run Analysis</button>
+  
+  <div id="summary-stats">
+    <table id="stats-table">
+      <thead>
+        <tr>
+          <th>Buffer/Point ID</th>
+          <th>Mean</th>
+          <th>Min</th>
+          <th>Max</th>
+          <th>Standard Deviation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Rows will be added dynamically -->
+      </tbody>
+    </table>
+    <!-- Pagination controls -->
+<div id="pagination-controls">
+  </div>
+  <!-- Add a button to export the table data to CSV -->
+<button id="export-csv-btn" class="btn btn-primary">Export to CSV</button>
+
+
+  <!-- Reference to your JavaScript file -->
+  <script src="pen.js"></script>
+</body>
+</html>

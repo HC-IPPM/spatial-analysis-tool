@@ -1,0 +1,17 @@
+es: Array(2)0: "TOTAL_DW_OWN_EN"1: "AVG_DWELLING_EN"length: 2[[Prototype]]: Array(0)at: ƒ at()concat: ƒ concat()constructor: ƒ Array()copyWithin: ƒ copyWithin()entries: ƒ entries()every: ƒ every()fill: ƒ fill()filter: ƒ filter()find: ƒ find()findIndex: ƒ findIndex()findLast: ƒ findLast()findLastIndex: ƒ findLastIndex()flat: ƒ flat()flatMap: ƒ flatMap()forEach: ƒ forEach()includes: ƒ includes()indexOf: ƒ indexOf()join: ƒ join()keys: ƒ keys()lastIndexOf: ƒ lastIndexOf()length: 0map: ƒ map()pop: ƒ pop()push: ƒ push()reduce: ƒ reduce()reduceRight: ƒ reduceRight()reverse: ƒ reverse()shift: ƒ shift()slice: ƒ slice()some: ƒ some()sort: ƒ sort()splice: ƒ splice()toLocaleString: ƒ toLocaleString()toReversed: ƒ toReversed()toSorted: ƒ toSorted()toSpliced: ƒ toSpliced()toString: ƒ toString()unshift: ƒ unshift()values: ƒ values()with: ƒ with()Symbol(Symbol.iterator): ƒ values()Symbol(Symbol.unscopables): {at: true, copyWithin: true, entries: true, fill: true, find: true, …}[[Prototype]]: Object
+Console.js:61 Query where clause: TOTAL_DW_OWN_EN IS NOT NULL AND AVG_DWELLING_EN IS NOT NULL
+Console.js:61 Error processing point 1: TypeError: query.geometry is not a function
+    at results (app.js:180:17)
+    at new Promise (<anonymous>)
+    at HTMLButtonElement.runAnalysis (app.js:174:31)
+Mt.forEach.n.<computed> @ Console.js:61Understand this errorAI
+Console.js:61 Processing point 2 at 43.651748, -79.505704 with buffer 12.114km
+Console.js:61 Query geometry: {"rings":[[[-79.35513563287685,43.651649189253135],[-79.35797646975331,43.672906759471736],[-79.3665002882551,43.69335451681212],[-79.38038459335239,43.71220545330185],[-79.39909922457375,43.728733314896544],[-79.42192620456892,43.7423007883637],[-79.4479871395296,43.75238432214163],[-79.47627714960997,43.75859457688635],[-79.505704,43.76069166886159],[-79.53513085039003,43.75859457688635],[-79.5634208604704,43.75238432214163],[-79.58948179543108,43.7423007883637],[-79.61230877542626,43.728733314896544],[-79.63102340664761,43.71220545330185],[-79.6449077117449,43.69335451681212],[-79.65343153024669,43.672906759471736],[-79.65627236712314,43.651649189253135],[-79.65332700895635,43.630399140505396],[-79.64471458136974,43.60997280252327],[-79.63077106923467,43.591153922427736],[-79.61203564684575,43.574663874019386],[-79.5892294570335,43.5611342138374],[-79.56322772870276,43.551082736692074],[-79.53502632811504,43.54489390154405],[-79.505704,43.54280433113841],[-79.47638167188495,43.54489390154405],[-79.44818027129725,43.551082736692074],[-79.42217854296649,43.5611342138374],[-79.39937235315425,43.574663874019386],[-79.38063693076533,43.59115392242774],[-79.36669341863026,43.60997280252327],[-79.35808099104365,43.630399140505396],[-79.35513563287685,43.651649189253135]]],"spatialReference":{"wkid":4326}}
+Console.js:61 Querying attributes: Array(2)
+Console.js:61 Query where clause: TOTAL_DW_OWN_EN IS NOT NULL AND AVG_DWELLING_EN IS NOT NULL
+Console.js:61 Error processing point 2: TypeError: query.geometry is not a function
+    at results (app.js:180:17)
+    at new Promise (<anonymous>)
+    at HTMLButtonElement.runAnalysis (app.js:174:31)
+Mt.forEach.n.<computed> @ Console.js:61Understand this errorAI
+Console.js:61 Processing point 3 at 43.693952, -79.410406 with buffer 12.114km

@@ -1,0 +1,563 @@
+// Initialize map
+const map = L.map('map').setView([45.4215, -75.6972], 13);
+
+
+// Load a reliable tile layer
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 18,
+  attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+// Handle file upload
+document.getElementById('fileInput').addEventListener('change', handleFileUpload);
+
+function handleFileUpload(event) {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const fileContent = e.target.result;
+    const extension = file.name.split('.').pop().toLowerCase();
+    if (extension === 'csv') {
+      parseCSV(fileContent);
+    } else if (extension === 'geojson') {
+      renderGeoJSON(JSON.parse(fileContent));
+    } else {
+      console.error('Unsupported file format. Please upload a CSV or GeoJSON file.');
+    }
+  };
+  reader.readAsText(file);
+}
+
+// CSV Parsing and GeoJSON Rendering
+function parseCSV(content) {
+  Papa.parse(content, {
+    header: true,
+    dynamicTyping: true,
+    complete: function(results) {
+      const data = results.data;
+      const latField = Object.keys(data[0]).find(key => /lat/i.test(key));
+      const longField = Object.keys(data[0]).find(key => /long/i.test(key));
+
+      if (!latField || !longField) {
+        console.error('Latitude/Longitude fields not found in the CSV.');
+        return;
+      }
+
+      const geojson = {
+        type: "FeatureCollection",
+        features: data.map(row => ({
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [row[longField], row[latField]]
+          },
+          properties: row
+        })).filter(f => f.geometry.coordinates[0] && f.geometry.coordinates[1]) // Ensure valid coordinates
+      };
+
+      renderGeoJSON(geojson);
+    }
+  });
+}
+
+// Render GeoJSON on the map and auto-zoom to extent
+function renderGeoJSON(geojson) {
+  const geoLayer = L.geoJSON(geojson, {
+    onEachFeature: function(feature, layer) {
+      if (feature.geometry.type === 'Point') {
+        const customIcon = L.icon({
+          iconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-orange.png',
+          iconSize: [25, 41],
+          iconAnchor: [12, 41],
+          popupAnchor: [1, -34],
+        });
+
+        // Display all properties in the popup
+        let popupContent = '<b>Properties:</b><br>';
+        Object.keys(feature.properties).forEach(key => {
+          popupContent += `<b>${key}:</b> ${feature.properties[key]}<br>`;
+        });
+
+        const marker = L.marker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], { icon: customIcon })
+          .addTo(map)
+          .bindPopup(popupContent);
+
+        // Store the marker in feature properties for buffering later
+        feature.properties.marker = marker;
+      }
+    }
+  }).addTo(map);
+
+  // Auto-zoom to fit points
+  map.fitBounds(geoLayer.getBounds());
+
+  // Store the geoLayer in a global variable to be used later for buffering
+  window.geoLayer = geoLayer;
+
+  // Create buffers initially
+  createBuffers(geoLayer);
+}
+
+// Create buffer around points
+function createBuffers(layer) {
+  // Clear any existing buffers before creating new ones
+  map.eachLayer(function(existingLayer) {
+    if (existingLayer instanceof L.Circle) {
+      map.removeLayer(existingLayer);
+    }
+  });
+
+  const bufferDistance = parseFloat(document.getElementById('bufferSlider').value); // Get buffer distance in kilometers
+
+  // Ensure the layer is iterable
+  if (layer && layer.eachLayer) {
+    layer.eachLayer(function(l) {
+      if (l.feature && l.feature.properties.marker) {
+        const bufferedCircle = L.circle(l.feature.properties.marker.getLatLng(), {
+          radius: bufferDistance * 1000, // Convert km to meters
+          color: 'blue',
+          fillOpacity: 0.2
+        }).addTo(map);
+      }
+    });
+  } else {
+    console.error("The layer is not iterable.");
+  }
+}
+
+// Slider for buffer distance adjustment
+document.getElementById('bufferSlider').addEventListener('input', function() {
+  const bufferValue = document.getElementById('bufferSlider').value;
+  document.getElementById('bufferValue').textContent = `${bufferValue} km`;
+
+  // Recreate buffers based on the new slider value
+  if (window.geoLayer) {
+    createBuffers(window.geoLayer);
+  }
+});
+
+// Define the FeatureService URL
+const featureServiceUrl = 'https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/StatCan/cd_socioeconomic_variables_2016_en/MapServer/4';
+
+// Populate dropdown with the relevant fields
+const dropdown = document.getElementById('attribute-select');
+const fields = [
+    { name: 'TOT_EDUC_POP_25_64_EN', label: 'Total population aged 25 to 64 years' },
+    { name: 'TOT_POST_SECOND_EN', label: 'Population (aged 25 to 64 years) with postsecondary certificate, diploma or degree' },
+    { name: 'PER_POP_TER_ED_EN', label: 'Percentage of population aged 25 to 64 years with postsecondary certificate, diploma or degree' }
+];
+
+fields.forEach(field => {
+    const option = document.createElement('option');
+    option.value = field.name;
+    option.text = field.label;
+    dropdown.appendChild(option);
+});
+
+// Add event listener to the 'Run Analysis' button
+document.getElementById('run-analysis').addEventListener('click', function() {
+  
+  
+  
+  const selectedField = dropdown.value;
+  if (!selectedField) {
+    alert('Please select an attribute.');
+    return;
+  }
+
+  // Run buffer and intersect analysis
+  if (window.geoLayer) {
+    window.geoLayer.eachLayer(function(layer) {
+      const buffer = L.circle(layer.getLatLng(), {
+        radius: parseFloat(document.getElementById('bufferSlider').value) * 1000, // Adjust the buffer size
+        color: 'blue',
+        fillOpacity: 0.5
+      }).addTo(map);
+
+      queryFeatureServiceForIntersection(buffer.getBounds(), selectedField);
+    });
+    
+  } else {
+    console.error('No geoLayer available for buffer creation.');
+  }
+});
+
+
+
+// Function to query FeatureService for intersection
+function queryFeatureServiceForIntersection(bounds, selectedField) {
+  const query = L.esri.query({
+    url: featureServiceUrl
+  });
+
+  query.within(bounds);
+  query.where(`${selectedField} IS NOT NULL`);
+  query.run(function(error, featureCollection) {
+    if (error) {
+      console.error("Error querying FeatureService: ", error);
+      return;
+    }
+
+    console.log("Intersecting Polygons: ", featureCollection.features);
+
+    // Correct usage: eCollection -> featureCollection
+    featureCollection.features.forEach(function(feature) {
+      L.geoJSON(feature).addTo(map).bindPopup('Intersected Feature');
+    });
+
+    // After all buffers are processed, log the final total intersections
+    console.log("Total Intersections for all buffers: ", featureCollection.features.length);
+  });
+}
+
+
+// Run buffer and intersect analysis
+document.getElementById('run-analysis').addEventListener('click', function() {
+  const selectedField = dropdown.value;
+   
+  if (!selectedField) {
+    alert('Please select an attribute.');
+    return;
+  }
+
+  // Run buffer and intersect analysis
+  if (window.geoLayer) {
+    window.geoLayer.eachLayer(function(layer) {
+      const buffer = L.circle(layer.getLatLng(), {
+        radius: parseFloat(document.getElementById('bufferSlider').value) * 1000, // Adjust the buffer size
+        color: 'blue',
+        fillOpacity: 0.5
+      }).addTo(map);
+
+      // Log buffer creation details
+      console.log("Buffer created at:", layer.getLatLng(), "with bounds:", buffer.getBounds());
+
+      queryFeatureServiceForIntersection(buffer.getBounds(), selectedField);
+    });
+  } else {
+    console.error('No geoLayer available for buffer creation.');
+  }
+});
+
+// Function to query FeatureService for intersection
+function queryFeatureServiceForIntersection(bounds, selectedField) {
+  const query = L.esri.query({
+    url: featureServiceUrl
+  });
+
+  query.within(bounds);
+  query.where(`${selectedField} IS NOT NULL`);
+  
+  // Log bounds before querying
+  console.log("Querying with bounds:", bounds);
+
+  query.run(function(error, featureCollection) {
+    if (error) {
+      console.error("Error querying FeatureService: ", error);
+      return;
+    }
+
+    // Log the response
+    if (featureCollection.features.length === 0) {
+      console.log("No intersecting features found.");
+    } else {
+      console.log("Intersecting features:", featureCollection.features);
+    }
+
+    // Correct usage: featureCollection -> featureCollection
+    featureCollection.features.forEach(function(feature) {
+      L.geoJSON(feature).addTo(map).bindPopup('Intersected Feature');
+    });
+
+    // After all buffers are processed, log the final total intersections
+    console.log("Total Intersections for all buffers: ", featureCollection.features.length);
+  });
+}
+function calculateStats(features, selectedField) {
+  const values = features.map(feature => feature.properties[selectedField]).filter(val => val !== null && !isNaN(val));
+
+  if (values.length === 0) {
+    console.log("No valid values for statistics.");
+    return;
+  }
+
+  const mean = values.reduce((acc, val) => acc + val, 0) / values.length;
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const stdev = Math.sqrt(values.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) / values.length);
+
+  console.log(`Mean: ${mean}, Min: ${min}, Max: ${max}, Standard Deviation: ${stdev}`);
+  return { mean, min, max, stdev };
+  console.log('Calculated Stats - Mean:', mean); // Log the stats object after calculation
+}
+
+
+
+
+function queryFeatureServiceForIntersection(bounds, selectedField) {
+  const query = L.esri.query({
+    url: featureServiceUrl
+  });
+
+  query.within(bounds);
+  query.where(`${selectedField} IS NOT NULL`);
+
+  query.run(function(error, featureCollection) {
+    if (error) {
+      console.error("Error querying FeatureService: ", error);
+      return;
+    }
+
+    if (featureCollection.features.length === 0) {
+      console.log("No intersecting features found.");
+    } else {
+      console.log("Intersecting features:", featureCollection.features);
+      const stats = calculateStats(featureCollection.features, selectedField);
+      if (stats) {
+        console.log("Summary Statistics:", stats);
+          console.log('Calculated Stats - Mean:', stats); // Log the stats object after calculation;
+      }
+    }
+
+    featureCollection.features.forEach(function(feature) {
+      L.geoJSON(feature).addTo(map).bindPopup('Intersected Feature');
+    });
+
+    console.log("Total Intersections for all buffers:", featureCollection.features.length);
+  });
+}
+
+function addStatsToTable(bufferId, stats) {
+  const table = document.getElementById("stats-table").getElementsByTagName('tbody')[0];
+  
+  const row = table.insertRow();
+  row.setAttribute("id", `row-${bufferId}`); // Unique row identifier
+  
+  const cell1 = row.insertCell(0);
+  cell1.textContent = bufferId;
+
+  const cell2 = row.insertCell(1);
+  cell2.textContent = stats.mean.toFixed(2);
+
+  const cell3 = row.insertCell(2);
+  cell3.textContent = stats.min.toFixed(2);
+
+  const cell4 = row.insertCell(3);
+  cell4.textContent = stats.max.toFixed(2);
+
+  const cell5 = row.insertCell(4);
+  cell5.textContent = stats.stdev.toFixed(2);
+}
+
+function handleStatsFromIntersection(features, selectedField, bufferId) {
+  const stats = calculateStats(features, selectedField);
+  
+  if (stats) {
+    addStatsToTable(bufferId, stats);
+  }
+}
+
+function calculateStats(features, selectedField) {
+  const values = features.map(feature => feature.properties[selectedField]).filter(val => val !== null && !isNaN(val));
+
+  if (values.length === 0) {
+    console.log("No valid values for statistics.");
+    return;
+  }
+
+  const mean = values.reduce((acc, val) => acc + val, 0) / values.length;
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const stdev = Math.sqrt(values.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) / values.length);
+
+  console.log(`Mean: ${mean}, Min: ${min}, Max: ${max}, Standard Deviation: ${stdev}`);
+  return { mean, min, max, stdev };
+}
+
+// Function to query FeatureService for intersection
+function queryFeatureServiceForIntersection(bounds, selectedField) {
+  const query = L.esri.query({
+    url: featureServiceUrl
+  });
+
+  query.within(bounds);
+  query.where(`${selectedField} IS NOT NULL`);
+  query.run(function(error, featureCollection) {
+    if (error) {
+      console.error("Error querying FeatureService: ", error);
+      return;
+    }
+
+    console.log("Intersecting Polygons: ", featureCollection.features);
+
+    // Calculate summary statistics
+    let values = [];
+    featureCollection.features.forEach(function(feature) {
+      if (feature.properties[selectedField] !== undefined) {
+        values.push(feature.properties[selectedField]);
+      }
+    });
+
+    // If we have values, calculate the statistics
+    if (values.length > 0) {
+      const mean = calculateMean(values);
+      const min = Math.min(...values);
+      const max = Math.max(...values);
+      const stdDev = calculateStandardDeviation(values, mean);
+
+      // Update the summary stats table
+      updateStatsTable(mean, min, max, stdDev);
+    }
+
+    // After all buffers are processed, log the final total intersections
+    console.log("Total Intersections for all buffers: ", featureCollection.features.length);
+  });
+}
+
+// Calculate Mean
+function calculateMean(values) {
+  const sum = values.reduce((a, b) => a + b, 0);
+  return sum / values.length;
+}
+
+// Calculate Standard Deviation
+function calculateStandardDeviation(values, mean) {
+  const variance = values.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / values.length;
+  return Math.sqrt(variance);
+}
+
+// Function to update the stats table
+function updateStatsTable(mean, min, max, stdDev) {
+  // Create a new row in the table with the stats for the current buffer
+  const tableBody = document.querySelector("#stats-table tbody");
+
+  // Create new row with the data
+  const newRow = document.createElement('tr');
+  newRow.innerHTML = `
+    <td>Buffer ${tableBody.children.length + 1}</td>
+    <td>${mean.toFixed(2)}</td>
+    <td>${min.toFixed(2)}</td>
+    <td>${max.toFixed(2)}</td>
+    <td>${stdDev.toFixed(2)}</td>
+  `;
+
+  // Append the new row to the table
+  tableBody.appendChild(newRow);
+}
+
+// Function to clear the table before populating it with new data
+function clearStatsTable() {
+  const tableBody = document.querySelector("#stats-table tbody");
+  tableBody.innerHTML = '';  // Clear the existing rows
+}
+
+
+// Function to export table data to CSV
+function exportToCSV() {
+  const table = document.querySelector("#stats-table");
+  const rows = table.querySelectorAll("tr");
+  let csvContent = '';
+
+  rows.forEach(function(row) {
+    const cols = row.querySelectorAll("td, th");
+    const rowArray = Array.from(cols).map(col => col.textContent);
+    csvContent += rowArray.join(',') + '\n';
+  });
+
+  const link = document.createElement('a');
+  link.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
+  link.download = 'intersections.csv';
+  link.click();
+}
+
+// Store the table data globally
+let tableData = [];  // Store all rows of data here
+let currentPage = 1;  // Initial page
+const rowsPerPage = 20; // Adjust the number of rows per page as needed
+
+// Function to populate the table with data
+function updateTable() {
+  const tableBody = document.querySelector("#stats-table tbody");
+  tableBody.innerHTML = ''; // Clear the existing rows
+
+  // Get the data for the current page
+  const start = (currentPage - 1) * rowsPerPage;
+  const end = start + rowsPerPage;
+  const pageData = tableData.slice(start, end);
+
+  // Populate the table with the page data
+  pageData.forEach(row => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${row.id}</td>
+      <td>${row.mean}</td>
+      <td>${row.min}</td>
+      <td>${row.max}</td>
+      <td>${row.stdDev}</td>
+    `;
+    tableBody.appendChild(tr);
+  });
+
+  // Update the pagination buttons
+  updatePaginationControls();
+}
+
+// Function to generate pagination controls
+function updatePaginationControls() {
+  const paginationControls = document.getElementById("pagination-controls");
+  paginationControls.innerHTML = ''; // Clear existing controls
+
+  // Calculate total pages
+  const totalPages = Math.ceil(tableData.length / rowsPerPage);
+
+  // Create previous button
+  const prevButton = document.createElement("button");
+  prevButton.innerText = "Previous";
+  prevButton.disabled = currentPage === 1;
+  prevButton.addEventListener("click", () => changePage(currentPage - 1));
+  paginationControls.appendChild(prevButton);
+
+  // Create page number buttons
+  for (let i = 1; i <= totalPages; i++) {
+    const pageButton = document.createElement("button");
+    pageButton.innerText = i;
+    pageButton.classList.toggle("active", i === currentPage);
+    pageButton.addEventListener("click", () => changePage(i));
+    paginationControls.appendChild(pageButton);
+  }
+
+  // Create next button
+  const nextButton = document.createElement("button");
+  nextButton.innerText = "Next";
+  nextButton.disabled = currentPage === totalPages;
+  nextButton.addEventListener("click", () => changePage(currentPage + 1));
+  paginationControls.appendChild(nextButton);
+}
+
+// Function to handle page change
+function changePage(page) {
+  if (page < 1 || page > Math.ceil(tableData.length / rowsPerPage)) return;
+  currentPage = page;
+  updateTable(); // Re-update the table with the selected page
+}
+
+// Example: Simulate loading data and update the table
+document.getElementById('run-analysis').addEventListener('click', function() {
+  // Simulating some data fetching or processing
+  tableData = []; // Clear the previous data
+  for (let i = 1; i <= 50; i++) { // Simulating 50 rows of data
+    tableData.push({
+      id: `Buffer ${i}`,
+      mean: (Math.random() * 100).toFixed(2),
+      min: (Math.random() * 50).toFixed(2),
+      max: (Math.random() * 150).toFixed(2),
+      stdDev: (Math.random() * 30).toFixed(2)
+    });
+  }
+  
+  updateTable(); // Update the table when data is available
+});
+
+
+
+

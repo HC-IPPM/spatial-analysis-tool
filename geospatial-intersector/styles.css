@@ -1,0 +1,42 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+#map {
+  height: 600px;
+  width: 100%;
+  border: 1px solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+}
+
+#stats-table tbody tr:nth-child(odd) {
+  background-color: var(--bs-table-striped-bg);
+}
+
+#pagination-controls button {
+  margin: 0 5px;
+  min-width: 40px;
+}
+
+.table-responsive {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+#pagination-controls button.active {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  color: white;
+}
+
+#pagination-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.leaflet-popup-content {
+  max-height: 300px;
+  overflow-y: auto;
+}

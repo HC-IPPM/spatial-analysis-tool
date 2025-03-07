@@ -1,0 +1,28 @@
+oint 42 query details: Object
+Console.js:61 Query response for point 42: Object
+Console.js:61 Features found for point 42: 0
+Console.js:61 No features found for Point 42. Trying with relaxed parameters...
+Console.js:61 Secondary query found 0 features for point 42
+Console.js:61 Querying attribute: ABRG_POP_EN with where clause: ABRG_POP_EN IS NOT NULL
+Console.js:61 Point 42 query details: Object
+590Chrome is moving towards a new experience that allows users to choose to browse without third-party cookies.Understand this warningAI
+Console.js:61 Query response for point 42: Object
+Console.js:61 Features found for point 42: 0
+Console.js:61 No features found for Point 42. Trying with relaxed parameters...
+Console.js:61 Secondary query found 0 features for point 42
+Console.js:61 Processing point 43 at 43.642263, -79.513023 with buffer 12.876km
+Console.js:61 Querying attribute: NAI_POP_EN with where clause: NAI_POP_EN IS NOT NULL
+Console.js:61 Point 43 query details: {url: 'https://maps-cartes.services.geo.ca/server2_serveu…an/cd_socioeconomic_variables_2016_en/MapServer/0', bounds: '-79.67303719114491,43.52646650996683,-79.35300880885511,43.75805949003317', where: 'NAI_POP_EN IS NOT NULL', fields: Array(1)}
+Console.js:61 Query response for point 43: {displayFieldName: 'NAME_EN', fieldAliases: {…}, geometryType: 'esriGeometryPolygon', spatialReference: {…}, fields: Array(1), …}
+Console.js:61 Features found for point 43: 0
+Console.js:61 No features found for Point 43. Trying with relaxed parameters...
+Console.js:61 Secondary query found 0 features for point 43
+Console.js:61 Querying attribute: ABRG_POP_EN with where clause: ABRG_POP_EN IS NOT NULL
+Console.js:61 Point 43 query details: {url: 'https://maps-cartes.services.geo.ca/server2_serveu…an/cd_socioeconomic_variables_2016_en/MapServer/0', bounds: '-79.67303719114491,43.52646650996683,-79.35300880885511,43.75805949003317', where: 'ABRG_POP_EN IS NOT NULL', fields: Array(1)}
+Console.js:61 Query response for point 43: {displayFieldName: 'NAME_EN', fieldAliases: {…}, geometryType: 'esriGeometryPolygon', spatialReference: {…}, fields: Array(1), …}
+Console.js:61 Features found for point 43: 0
+Console.js:61 No features found for Point 43. Trying with relaxed parameters...
+Console.js:61 Secondary query found 0 features for point 43
+Console.js:61 Processing point 44 at 43.678122, -79.409527 with buffer 12.876km
+Console.js:61 Querying attribute: NAI_POP_EN with where clause: NAI_POP_EN IS NOT NULL
+Console.js:61 Point 44 query details: 

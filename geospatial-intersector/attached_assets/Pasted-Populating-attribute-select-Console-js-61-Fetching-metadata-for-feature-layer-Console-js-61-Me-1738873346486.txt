@@ -1,0 +1,22 @@
+Populating attribute select...
+Console.js:61 Fetching metadata for feature layer...
+Console.js:61 Metadata received: Object
+Console.js:61 Numeric fields found: Array(5)
+07ec9ef9-e25b-489b-8…neway.replit.dev/:1 Uncaught SyntaxError: Unexpected token 'i', "inputID,ad"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at reader.onload (app.js:404:26)Understand this errorAI
+Console.js:61 Selected attributes: Array(1)
+Console.js:61 Starting analysis...
+Console.js:61 Selected attributes: Array(1)
+Console.js:61 Using FeatureService URL: https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/StatCan/cd_socioeconomic_variables_2016_en/MapServer/4
+Console.js:61 Number of layers to process: 20
+Console.js:61 Processing point 1 at 43.76827074, -79.13495423 with buffer 12.765km
+Console.js:61 Query geometry: {"rings":[[[-78.97598566296976,43.76816057620911],[-78.97898178373048,43.79056074141787],[-78.987978420482,43.812108001274304],[-79.00263550340857,43.8319729556942],[-79.02239357558804,43.849390173090164],[-79.04649470514384,43.86368791466848],[-79.07401139803943,43.87431431617903],[-79.10388243541635,43.880858964702355],[-79.13495423,43.883068984429435],[-79.16602602458364,43.880858964702355],[-79.19589706196057,43.87431431617903],[-79.22341375485617,43.86368791466848],[-79.24751488441197,43.849390173090164],[-79.26727295659143,43.8319729556942],[-79.28193003951802,43.812108001274304],[-79.29092667626952,43.79056074141787],[-79.29392279703023,43.76816057620911],[-79.29080991908147,43.74576879665818],[-79.28171430009927,43.724245417161505],[-79.26699107893643,43.704416202299264],[-79.2472097815723,43.687041142699485],[-79.22313187597342,43.672785559040214],[-79.19568132080555,43.66219489738392],[-79.16590926616787,43.65567412951695],[-79.13495423,43.65347249557057],[-79.10399919383212,43.65567412951695],[-79.07422713919446,43.66219489738392],[-79.04677658402659,43.672785559040214],[-79.02269867842772,43.687041142699485],[-79.00291738106358,43.704416202299264],[-78.98819415990074,43.724245417161505],[-78.97909854091853,43.74576879665818],[-78.97598566296976,43.76816057620911]]],"spatialReference":{"wkid":4326}}
+Console.js:61 Querying attributes: Array(1)
+Console.js:61 Query where clause: TOT_POST_SECOND_EN IS NOT NULL
+Console.js:61 Error processing point 1: TypeError: query.geometry is not a function
+    at results (app.js:180:19)
+    at new Promise (<anonymous>)
+    at HTMLButtonElement.runAnalysis (app.js:174:33)
+Mt.forEach.n.<computed> @ Console.js:61Understand this errorAI
+Console.js:61 Processing point 2 at 43.74352186, -79.56999572 with buffer 12.765km

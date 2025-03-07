@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map App - Buffer and Intersect with Socioeconomic Data</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+  
+  <!-- Leaflet and Esri styles -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-ajax/dist/leaflet.ajax.min.js"></script>
+  <script src="https://unpkg.com/leaflet-esri/dist/leaflet-esri.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <script src="https://unpkg.com/esri-leaflet"></script>
+</head>
+<body class="container-fluid">
+  <div class="row my-3">
+    <div class="col-12">
+      <h3 class="text-center">Map App - Buffer and Intersect with Socioeconomic Data</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <!-- Map container -->
+      <div id="map" class="mb-3"></div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <!-- Controls -->
+          <div class="mb-3">
+            <label for="featureServiceDropdown" class="form-label">Select FeatureService:</label>
+            <select id="featureServiceDropdown" class="form-select">
+              <option value="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/StatCan/cd_socioeconomic_variables_2016_en/MapServer/9">Median Income 2015</option>
+              <option value="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/StatCan/cd_socioeconomic_variables_2016_en/MapServer/4">Socioeconomic Variables: Education</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="fileInput" class="form-label">Upload CSV or GeoJSON:</label>
+            <input type="file" id="fileInput" class="form-control" accept=".csv,.geojson" />
+          </div>
+
+          <div class="mb-3">
+            <label for="bufferSlider" class="form-label">Buffer Distance (km): <span id="bufferValue">0</span></label>
+            <input type="range" id="bufferSlider" class="form-range" min="0" max="50" value="0" step="1" />
+          </div>
+
+          <div class="mb-3">
+            <label for="attribute-select" class="form-label">Select an Attribute to Query:</label>
+            <select id="attribute-select" class="form-select">
+              <option value="">-- Select an Attribute --</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <button id="run-analysis" class="btn btn-primary">Run Analysis</button>
+            <button id="clear-table" class="btn btn-secondary">Clear Results</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Analysis Results</h5>
+          <button id="export-csv-btn" class="btn btn-sm btn-success">Export to CSV</button>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table id="stats-table" class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Buffer/Point ID</th>
+                  <th>Mean</th>
+                  <th>Min</th>
+                  <th>Max</th>
+                  <th>Standard Deviation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Rows will be added dynamically -->
+              </tbody>
+            </table>
+          </div>
+          
+          <div id="pagination-controls" class="d-flex justify-content-center mt-3">
+            <!-- Pagination controls will be added dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

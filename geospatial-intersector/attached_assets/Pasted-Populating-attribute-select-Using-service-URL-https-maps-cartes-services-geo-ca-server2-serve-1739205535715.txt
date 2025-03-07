@@ -1,0 +1,43 @@
+Populating attribute select...
+ Using service URL: https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/StatCan/cd_socioeconomic_variables_2016_en/MapServer/0
+Console.js:61 Populating attribute select...
+Console.js:61 Using service URL: https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/StatCan/cd_socioeconomic_variables_2016_en/MapServer/0
+ Metadata received: Object
+ Numeric fields found: Array(13)
+Console.js:61 Metadata received: Object
+Console.js:61 Numeric fields found: Array(13)
+Console.js:61 Populating attribute select...
+Console.js:61 Using service URL: https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/StatCan/cd_socioeconomic_variables_2016_en/MapServer/4
+Console.js:61 Metadata received: Object
+Console.js:61 Numeric fields found: Array(5)
+Console.js:61 Selected attributes: Array(4)
+Console.js:61 Selected attributes: Array(3)
+Console.js:61 Selected attributes: Array(2)
+Console.js:61 Starting analysis...
+Console.js:61 Selected attributes: Array(2)
+Console.js:61 Using FeatureService URL: https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/StatCan/cd_socioeconomic_variables_2016_en/MapServer/4
+Console.js:61 Processing field TOT_EDUC_POP_25_64_EN for point 1
+Console.js:61 Error in query setup for point 1: TypeError: Cannot read properties of undefined (reading 'forEach')
+    at getBoundingBoxFromRings (app.js:654:9)
+    at app.js:589:22
+    at new Promise (<anonymous>)
+    at queryFeatureService (app.js:586:10)
+    at HTMLButtonElement.runAnalysis (app.js:512:37)
+Mt.forEach.n.<computed> @ Console.js:61Understand this errorAI
+Console.js:61 Processing field PER_POP_TER_ED_EN for point 1
+Console.js:61 Error in query setup for point 1: TypeError: Cannot read properties of undefined (reading 'forEach')
+    at getBoundingBoxFromRings (app.js:654:9)
+    at app.js:589:22
+    at new Promise (<anonymous>)
+    at queryFeatureService (app.js:586:10)
+    at HTMLButtonElement.runAnalysis (app.js:512:37)
+Mt.forEach.n.<computed> @ Console.js:61Understand this errorAI
+Console.js:61 Processing field TOT_EDUC_POP_25_64_EN for point 2
+Console.js:61 Error in query setup for point 2: TypeError: Cannot read properties of undefined (reading 'forEach')
+    at getBoundingBoxFromRings (app.js:654:9)
+    at app.js:589:22
+    at new Promise (<anonymous>)
+    at queryFeatureService (app.js:586:10)
+    at HTMLButtonElement.runAnalysis (app.js:512:37)
+Mt.forEach.n.<computed> @ Console.js:61Understand this errorAI
+Console.js:61 Processing field PER_POP_TER_ED_EN for point 2

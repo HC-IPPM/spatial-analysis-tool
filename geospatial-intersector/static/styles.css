@@ -1,0 +1,410 @@
+/* Government of Canada Theme Styles */
+:root {
+  --gc-red: #CF2234;
+  --gc-blue: #26374A;
+  --gc-gray: #EAEBED;
+  --gc-text: #333333;
+  --gc-link: #284162;
+  --gc-border: #DDD;
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+  color: var(--gc-text);
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Styles */
+.gc-banner {
+  background-color: white;
+  border-bottom: 1px solid var(--gc-border);
+  padding: 15px 0;
+}
+
+.fip-logo {
+  height: 25px;
+  width: auto;
+}
+
+.gc-app-name {
+  background-color: var(--gc-blue);
+  color: white;
+  padding: 15px 0;
+}
+
+.gc-app-name h1 {
+  font-size: 1.6em;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Container Styles */
+.gc-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Map Styles */
+#map {
+  height: calc(100vh - 200px); /* Adjust for header and padding */
+  min-height: 600px;
+  width: 100%;
+  border: 1px solid var(--gc-border);
+  border-radius: 4px;
+}
+
+/* Panel Styles */
+.gc-panel {
+  background: white;
+  border: 1px solid var(--gc-border);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  height: calc(100vh - 200px); /* Match map height */
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.gc-panel-body {
+  padding: 15px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.gc-panel-header {
+  background-color: var(--gc-gray);
+  padding: 15px;
+  border-bottom: 1px solid var(--gc-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+
+/* Form Elements */
+.gc-label {
+  font-weight: 600;
+  color: var(--gc-blue);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.gc-form-text {
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 4px;
+}
+
+.gc-radio {
+  margin-bottom: 10px;
+}
+
+.gc-radio-label {
+  margin-left: 8px;
+}
+
+/* Button Styles */
+.gc-button {
+  background-color: var(--gc-blue);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.gc-button:hover {
+  background-color: #1a2733;
+}
+
+.gc-button.secondary {
+  background-color: var(--gc-gray);
+  color: var(--gc-blue);
+}
+
+/* Table Styles */
+.gc-table-container {
+  max-height: calc(100vh - 500px); /* Adjusted height to prevent scrollbar */
+  overflow-y: auto;
+  margin-bottom: 20px;
+  border: 1px solid var(--gc-border);
+  border-radius: 4px;
+}
+
+.gc-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0; /* Remove bottom margin from table */
+}
+
+.gc-table th {
+  background-color: var(--gc-blue);
+  color: white;
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.gc-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--gc-border);
+}
+
+.gc-table tbody tr:nth-child(odd) {
+  background-color: var(--gc-gray);
+}
+
+/* Pagination Controls */
+.gc-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  padding: 10px;
+}
+
+.gc-pagination button {
+  min-width: 40px;
+  padding: 5px 10px;
+  border: 1px solid var(--gc-border);
+  background-color: white;
+  color: var(--gc-blue);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.gc-pagination button:hover:not(:disabled) {
+  background-color: var(--gc-gray);
+  border-color: var(--gc-blue);
+}
+
+.gc-pagination button.active {
+  background-color: var(--gc-blue);
+  color: white;
+  border-color: var(--gc-blue);
+}
+
+.gc-pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--gc-gray);
+}
+
+.gc-pagination span {
+  color: var(--gc-text);
+  font-weight: bold;
+}
+
+/* Footer Styles */
+.gc-footer {
+  background-color: var(--gc-blue);
+  color: white;
+  padding: 30px 0;
+  margin-top: 40px;
+}
+
+.gc-footer-logo {
+  height: 40px;
+  width: auto;
+}
+
+/* Range Slider Styles */
+.gc-range {
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .gc-container {
+    padding: 10px;
+  }
+
+  .gc-panel-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .gc-button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  #map {
+    height: 400px;
+    min-height: auto;
+  }
+
+  .gc-panel {
+    height: auto;
+    min-height: auto;
+  }
+}
+
+/* Accessibility Styles */
+.wb-inv {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  width: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* Additional GoC Specific Elements */
+.language-toggle {
+  text-decoration: none;
+  color: var(--gc-blue);
+}
+
+.language-toggle:hover {
+  text-decoration: underline;
+}
+
+/* Keep existing styles for specific functionality */
+.sort-icon {
+  cursor: pointer;
+  user-select: none;
+  opacity: 0.5;
+}
+
+th:hover .sort-icon {
+  opacity: 1;
+}
+
+.attribute-checkboxes {
+  max-height: none; /* Remove fixed height */
+  border: 1px solid var(--gc-border);
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.export-spinner {
+  display: none;
+  margin-left: 8px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--gc-border);
+  border-top: 2px solid var(--gc-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.export-spinner.active {
+  display: inline-block;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Add styles for processing status message */
+.processing-status {
+  margin: 15px 0;
+  padding: 10px;
+  border-radius: 4px;
+  display: none;
+}
+
+.processing-status.success {
+  background-color: var(--bs-success-bg-subtle);
+  border: 1px solid var(--bs-success-border-subtle);
+  color: var(--bs-success-text);
+}
+
+.processing-status.processing {
+  background-color: var(--bs-info-bg-subtle);
+  border: 1px solid var(--bs-info-border-subtle);
+  color: var(--bs-info-text);
+}
+
+/* Add disabled state for export buttons */
+.gc-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Add processing spinner */
+.processing-spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--gc-border);
+  border-top: 2px solid var(--gc-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+/* Add tooltip styles */
+.gc-tooltip-btn {
+  color: var(--gc-blue) !important;
+  padding: 0;
+  border: none;
+  background: none;
+  text-decoration: none !important;
+}
+
+.gc-tooltip-btn:hover,
+.gc-tooltip-btn:focus {
+  color: var(--gc-red) !important;
+  text-decoration: none !important;
+}
+
+/* Style Bootstrap tooltips for accessibility */
+.tooltip {
+  --bs-tooltip-bg: var(--gc-blue);
+  --bs-tooltip-color: white;
+  font-size: 0.9rem;
+  max-width: 300px;
+}
+
+.tooltip .tooltip-inner {
+  padding: 12px;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+/* High contrast for tooltip text */
+.tooltip-inner strong {
+  color: white;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+/* Ensure tooltip remains visible while hovering */
+.tooltip.show {
+  opacity: 0.98;
+}
+
+/* Add focus indicator for keyboard navigation */
+.gc-tooltip-btn:focus {
+  outline: 2px solid var(--gc-blue);
+  outline-offset: 2px;
+}
+
+/* Hide Bootstrap icons for screen readers */
+.bi {
+  font-size: 1rem;
+}

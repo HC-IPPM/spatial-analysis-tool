@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outil d'analyse spatiale - Gouvernement du Canada</title>
+
+  <!-- Government of Canada Theme -->
+  <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/theme.min.css">
+  <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/wet-boew/css/messages.min.css">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+  <!-- ESRI Leaflet Geocoder CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.3.3/dist/esri-leaflet-geocoder.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+
+  <!-- Load Leaflet first -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+  <!-- Load ESRI Leaflet -->
+  <script src="https://unpkg.com/esri-leaflet@3.0.10/dist/esri-leaflet.js"></script>
+
+  <!-- Load ESRI Leaflet Geocoder -->
+  <script src="https://unpkg.com/esri-leaflet-geocoder@3.1.4/dist/esri-leaflet-geocoder.js"></script>
+
+  <!-- Load CryptoJS for MD5 generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+  <!-- Load Turf.js for spatial operations -->
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+
+  <!-- Additional libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+  <!-- Add Bootstrap tooltips -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+</head>
+<body>
+  <!-- GC Header -->
+  <header role="banner">
+    <div class="gc-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            <a href="https://www.canada.ca/fr.html">
+              <img src="https://www.canada.ca/etc/designs/canada/wet-boew/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" class="fip-logo">
+            </a>
+          </div>
+          <div class="col-6 text-end">
+            <section class="text-end">
+              <h2 class="wb-inv">Sélection de la langue</h2>
+              <a href="{{ url_for('index_en') }}" class="btn btn-link p-2">English</a>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="gc-app-name">
+      <div class="container">
+        <h1>Outil d'analyse spatiale</h1>
+      </div>
+    </div>
+  </header>
+
+  <main role="main" property="mainContentOfPage" class="container-fluid gc-container">
+    <h1 class="wb-inv">Outil d'analyse spatiale - Contenu principal</h1>
+
+    <div class="row my-4">
+      <div class="col-md-8">
+        <!-- Map container -->
+        <div id="map" class="mb-3 gc-map"></div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="gc-panel">
+          <div class="gc-panel-body">
+            <!-- Controls -->
+            <div class="mb-3">
+              <label for="featureServiceDropdown" class="gc-label">
+                Sélectionner ou entrer le service de caractéristiques
+                <button class="btn btn-link p-0 ms-2 gc-tooltip-btn" 
+                        data-bs-toggle="tooltip" 
+                        data-bs-placement="right"
+                        data-bs-html="true"
+                        title="<strong>Sélection du service de caractéristiques :</strong><br>
+                        Choisissez parmi les services de carte prédéfinis ou entrez votre propre URL de service ESRI REST.<br><br>
+                        - Les options prédéfinies incluent les données de recensement et les statistiques de population<br>
+                        - L'URL personnalisée doit être un point de terminaison de service de caractéristiques ESRI REST valide<br>
+                        - Le service doit être accessible publiquement">
+                  <i class="bi bi-question-circle" aria-hidden="true"></i>
+                  <span class="wb-inv">Aide pour la sélection du service de caractéristiques</span>
+                </button>
+              </label>
+              <select id="featureServiceDropdown" class="form-select mb-2">
+                <option value="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/StatCan/cd_socioeconomic_variables_2016_fr/MapServer/0">Divisions de recensement</option>
+                <option value="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/StatCan/cd_socioeconomic_variables_2016_fr/MapServer/1">Densité de population</option>
+                <option value="https://maps-cartes.services.geo.ca/server2_serveur2/rest/services/StatCan/cd_socioeconomic_variables_2016_fr/MapServer/4">Statistiques d'éducation</option>
+                <option value="custom">URL de service personnalisé...</option>
+              </select>
+              <div id="customUrlInput" class="mb-2 d-none">
+                <input type="url" id="customFeatureServiceUrl" class="form-control" placeholder="Entrer l'URL du service ESRI REST">
+                <div class="gc-form-text">Entrez une URL de point de terminaison de service de caractéristiques ESRI REST valide et publique</div>
+                <button id="validateUrl" class="btn btn-default btn-sm mt-2">Valider et charger</button>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="gc-label">
+                Type d'analyse
+                <button class="btn btn-link p-0 ms-2 gc-tooltip-btn"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="right"
+                        data-bs-html="true"
+                        title="<strong>Choisissez votre méthode d'analyse :</strong><br>
+                        <strong>Analyse de zone tampon :</strong><br>
+                        - Crée un cercle autour des points<br>
+                        - Idéal pour l'analyse simple basée sur la distance<br>
+                        - Mesuré en kilomètres<br><br>
+                        <strong>Zone de service (temps de conduite) :</strong><br>
+                        - Montre les zones accessibles en voiture<br>
+                        - Tient compte des réseaux routiers réels<br>
+                        - Mesuré en minutes de temps de conduite">
+                  <i class="bi bi-question-circle" aria-hidden="true"></i>
+                  <span class="wb-inv">Aide pour la sélection du type d'analyse</span>
+                </button>
+              </label>
+              <div class="gc-radio">
+                <input class="gc-radio-input" type="radio" name="analysisType" id="bufferAnalysis" value="buffer" checked>
+                <label class="gc-radio-label" for="bufferAnalysis">
+                  Analyse de zone tampon
+                </label>
+              </div>
+              <div class="gc-radio">
+                <input class="gc-radio-input" type="radio" name="analysisType" id="isochroneAnalysis" value="isochrone">
+                <label class="gc-radio-label" for="isochroneAnalysis">
+                  Zone de service (temps de conduite - automobile)
+                </label>
+              </div>
+            </div>
+
+            <!-- Buffer controls -->
+            <div id="bufferControls" class="gc-controls">
+              <div class="mb-3">
+                <label for="bufferDistance" class="gc-label">Distance de zone tampon (km):</label>
+                <div class="input-group">
+                  <input type="number" id="bufferDistance" class="form-control" value="0" min="0" max="50" step="0.001">
+                  <input type="range" id="bufferSlider" class="gc-range" min="0" max="50" value="0" step="0.001" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Isochrone controls -->
+            <div id="isochroneControls" style="display: none;" class="gc-controls">
+              <div class="mb-3">
+                <label for="isochroneTime" class="gc-label">Temps de conduite (minutes):</label>
+                <div class="input-group">
+                  <input type="number" id="isochroneTime" class="form-control" value="5" min="1" max="60" step="1">
+                  <input type="range" id="isochroneSlider" class="gc-range" min="1" max="60" value="5" step="1" />
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="fileInput" class="gc-label">
+                Télécharger CSV ou GeoJSON
+                <button class="btn btn-link p-0 ms-2 gc-tooltip-btn"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="right"
+                        data-bs-html="true"
+                        title="<strong>Exigences des fichiers :</strong><br>
+                        <strong>Format CSV :</strong><br>
+                        - Doit inclure les colonnes 'latitude' et 'longitude'<br>
+                        - Utiliser les coordonnées WGS84 (degrés décimaux)<br>
+                        - Colonne 'id' optionnelle pour l'identification des points<br><br>
+                        <strong>Format GeoJSON :</strong><br>
+                        - Doit contenir des entités de type Point<br>
+                        - Utiliser la projection WGS84 (EPSG:4326)<br>
+                        - Les propriétés peuvent inclure des attributs supplémentaires">
+                  <i class="bi bi-question-circle" aria-hidden="true"></i>
+                  <span class="wb-inv">Aide pour les exigences de téléchargement de fichiers</span>
+                </button>
+              </label>
+              <input type="file" id="fileInput" class="form-control" accept=".csv,.geojson" />
+            </div>
+
+            <div class="mb-3">
+              <label for="opacitySlider" class="gc-label">Opacité de la zone de service : <span id="opacityValue">30%</span></label>
+              <input type="range" id="opacitySlider" class="gc-range" min="0" max="100" value="30" step="1" />
+            </div>
+
+            <div class="mb-3">
+              <label class="gc-label d-flex justify-content-between align-items-center">
+                Attributs à interroger
+                <button class="btn btn-link p-0 ms-2 gc-tooltip-btn"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="right"
+                        data-bs-html="true"
+                        title="<strong>Sélection des attributs d'analyse :</strong><br>
+                        - Choisir les champs numériques à analyser<br>
+                        - Plusieurs attributs peuvent être sélectionnés<br>
+                        - Chaque attribut sera analysé séparément<br>
+                        - Les résultats montreront des statistiques pour chaque attribut sélectionné<br><br>
+                        <strong>Note :</strong> Seuls les champs numériques sont disponibles pour l'analyse statistique">
+                  <i class="bi bi-question-circle" aria-hidden="true"></i>
+                  <span class="wb-inv">Aide pour la sélection des attributs</span>
+                </button>
+                <button class="btn btn-outline-secondary btn-sm" id="toggleAllAttributes">Basculer tout</button>
+              </label>
+              <div id="attribute-select" class="attribute-checkboxes">
+                <!-- Checkboxes will be added dynamically -->
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="gc-label">
+                Mesures statistiques
+                <button class="btn btn-link p-0 ms-2 gc-tooltip-btn"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="right"
+                        data-bs-html="true"
+                        title="<strong>Guide des mesures statistiques :</strong><br>
+                        <strong>Compte :</strong> Nombre d'entités dans la zone<br>
+                        <strong>Moyenne :</strong> Valeur moyenne (sensible aux valeurs aberrantes)<br>
+                        <strong>Médiane :</strong> Valeur centrale (meilleure pour les données asymétriques)<br>
+                        <strong>Min/Max :</strong> Valeurs minimales et maximales<br>
+                        <strong>Écart-type :</strong> Mesure de la dispersion<br><br>
+                        <strong>Conseils :</strong><br>
+                        - Utiliser la médiane pour les données de revenus/prix<br>
+                        - La moyenne convient bien aux données normalement distribuées<br>
+                        - L'écart-type aide à identifier la variabilité des données">
+                  <i class="bi bi-question-circle" aria-hidden="true"></i>
+                  <span class="wb-inv">Aide pour les mesures statistiques</span>
+                </button>
+              </label>
+              <div class="stats-measures">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="count" id="measure-count" checked>
+                  <label class="form-check-label" for="measure-count">Compte</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="mean" id="measure-mean" checked>
+                  <label class="form-check-label" for="measure-mean">Moyenne</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="median" id="measure-median" checked>
+                  <label class="form-check-label" for="measure-median">Médiane</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="min" id="measure-min" checked>
+                  <label class="form-check-label" for="measure-min">Minimum</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="max" id="measure-max" checked>
+                  <label class="form-check-label" for="measure-max">Maximum</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="stdDev" id="measure-stddev" checked>
+                  <label class="form-check-label" for="measure-stddev">Écart-type</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <button id="run-analysis" class="btn btn-primary gc-button">Exécuter l'analyse</button>
+              <button id="clear-table" class="btn btn-secondary gc-button">Effacer les résultats</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results section -->
+    <div class="row mt-3">
+      <div class="col-12">
+        <div class="gc-panel">
+          <div class="gc-panel-header">
+            <h2 class="gc-panel-title">Résultats d'analyse</h2>
+            <div class="gc-button-group">
+              <button id="export-csv-btn" class="btn btn-default gc-button" disabled>Exporter en CSV</button>
+              <button id="export-geojson-btn" class="btn btn-default gc-button" disabled>Exporter en GeoJSON</button>
+            </div>
+          </div>
+          <div class="gc-panel-body">
+            <!-- Processing Status Message -->
+            <div id="processing-status" class="processing-status">
+              <span class="processing-spinner"></span>
+              <span id="status-message"></span>
+            </div>
+            <!-- Table content -->
+            <div class="gc-table-container">
+              <table id="stats-table" class="gc-table">
+                <thead>
+                  <tr>
+                    <th>ID du point</th>
+                    <th>Zone tampon (km)</th>
+                    <th>Compte <span class="sort-icon">↕</span></th>
+                    <th>Moyenne <span class="sort-icon">↕</span></th>
+                    <th>Médiane <span class="sort-icon">↕</span></th>
+                    <th>Min <span class="sort-icon">↕</span></th>
+                    <th>Max <span class="sort-icon">↕</span></th>
+                    <th>Écart-type <span class="sort-icon">↕</span></th>
+                    <th>Dimension</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Rows will be added dynamically -->
+                </tbody>
+              </table>
+            </div>
+            <!-- Pagination -->
+            <div id="pagination-controls" class="gc-pagination"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- GC Footer -->
+  <footer role="contentinfo" class="gc-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <a href="https://www.canada.ca/fr.html">
+            <img src="https://www.canada.ca/etc/designs/canada/wet-boew/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" class="gc-footer-logo">
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
