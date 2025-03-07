@@ -28,3 +28,10 @@ pdm install -v
 export FLASK_APP=main
 pdm run flask run
 ```
+
+## Deploy with Cloud Build
+
+From this directory:
+```
+gcloud builds submit --config=cloudbuild.yaml
+```
