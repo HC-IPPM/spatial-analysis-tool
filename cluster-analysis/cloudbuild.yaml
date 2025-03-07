@@ -1,23 +1,43 @@
 steps:
-  # - id: deploy-cloud-function-if-main
-  #   name: 'gcr.io/google.com/cloudsdktool/cloud-sdk@sha256:3a24ff5f089d9ce3627306873ef1e1061488a63ae12c0bd0b5c24ec5ee594798'
-  #   dir: cluster-analysis
-  #   entrypoint: 'bash'
-  #   args:
-  #     - '-c'
-  #     - |
-  #       if [[ "$BRANCH_NAME" == "main" ]]; then
-  #         gcloud functions deploy cluster-analysis \
-  #           --gen2 \
-  #           --source=. \
-  #           --runtime=python312 \
-  #           --region=northamerica-northeast1 \
-  #           --entry-point= \
-  #           --trigger-http
-  #           --port 5000
-  #       else
-  #         exit 0
-  #       fi
+  - id: build-docker-image
+    name: 'gcr.io/cloud-builders/docker@sha256:b991d50960b337f581ad77ea2a59259a786d177019aa64d8b3acb01f65dbc154'
+    args:
+      - 'build'
+      - '-t'
+      - 'northamerica-northeast1-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/spatial-analysis:latest'
+      - '.'
 
-# From project root 
-# gcloud builds submit --config cluster-analysis/cloudbuld.yaml 
+      # docker build -t northamerica-northeast1-docker.pkg.dev/phx-01hwmw2c1r4/spatial-analysis-tool-repo/geospatial-intersector:latest .
+
+  - id: push-docker-image-to-artifact-registry
+    name: 'gcr.io/cloud-builders/docker@sha256:b991d50960b337f581ad77ea2a59259a786d177019aa64d8b3acb01f65dbc154'
+    args:
+      - 'push'
+      - 'northamerica-northeast1-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/spatial-analysis:latest'
+
+      # docker push northamerica-northeast1-docker.pkg.dev/phx-01hwmw2c1r4/spatial-analysis-tool-repo/geospatial-intersector:latest
+
+  - id: deploy-cloudrun
+    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk@sha256:3a24ff5f089d9ce3627306873ef1e1061488a63ae12c0bd0b5c24ec5ee594798'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud run deploy geospatial-intersector \
+          --image=northamerica-northeast1-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/spatial-analysis:latest \
+          --region=northamerica-northeast1 \
+          --platform=managed \
+          --allow-unauthenticated \
+          --port=5000
+
+      # gcloud run deploy geospatial-intersector \
+      #   --image=northamerica-northeast1-docker.pkg.dev/phx-01hwmw2c1r4/spatial-analysis-tool-repo/geospatial-intersector:latest \
+      #   --region=northamerica-northeast1 \
+      #   --platform=managed \
+      #   --allow-unauthenticated \
+      #   --port=5000
+
+substitutions:
+  _REPO_NAME: spatial-analysis-tool-repo
+
+# gcloud builds submit --config cloudbuild.yaml
