@@ -1,0 +1,19 @@
+steps:
+  - id: deploy-cloud-function-if-main
+    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk@sha256:3a24ff5f089d9ce3627306873ef1e1061488a63ae12c0bd0b5c24ec5ee594798'
+    dir: cluster-analysis
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        if [[ "$BRANCH_NAME" == "main" ]]; then
+          gcloud functions deploy cluster-analysis \
+            --gen2 \
+            --source=. \
+            --runtime=python311 \
+            --region=northamerica-northeast1 \
+            --entry-point=flask function \
+            --trigger-http
+        else
+          exit 0
+        fi

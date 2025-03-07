@@ -4,12 +4,12 @@ import os
 import logging
 import pandas as pd
 import geopandas as gpd
-from utils.data_processor import validate_and_process_data
-from utils.map_utils import create_base_map, add_points_to_map, add_boundary_to_map, prepare_geodataframe
-from utils.language_controller import init_language_controller
+from app.utils.data_processor import validate_and_process_data
+from app.utils.map_utils import create_base_map, add_points_to_map, add_boundary_to_map, prepare_geodataframe
+from app.utils.language_controller import init_language_controller
 import json
 import traceback
-from utils.spatial_analysis import generate_heatmap, calculate_local_morans_i, generate_h3_hexagons, perform_constrained_clustering, perform_kmeans
+from app.utils.spatial_analysis import generate_heatmap, calculate_local_morans_i, generate_h3_hexagons, perform_constrained_clustering, perform_kmeans
 from sklearn.cluster import KMeans
 
 # Configure logging
@@ -396,7 +396,7 @@ def change_language():
 if __name__ == '__main__':
     try:
         logger.info("Starting Flask application on port 5000...")
-        app.run(host='0.0.0.0', port=5000, debug=True)
+        app.run(host='0.0.0.0', port=5001, debug=True)
     except Exception as e:
         logger.error(f"Failed to start Flask application: {str(e)}\n{traceback.format_exc()}")
         raise
