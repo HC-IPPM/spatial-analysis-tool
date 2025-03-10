@@ -19,7 +19,7 @@ ENV PYTHONUNBUFFERED=True
 
 EXPOSE 5000
 
-# Run the Flask app (changed to gunicorn for prod)
-# CMD ["pdm", "run", "flask", "run", "--host=0.0.0.0", "--port=5000"]
+# Run the Flask app (changed to gunicorn for prod) 
+
 CMD ["pdm", "run", "gunicorn", "--bind", "0.0.0.0:5000", "app.app:app", "--log-level=debug"]
 
