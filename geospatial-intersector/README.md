@@ -31,6 +31,15 @@ pdm run flask run
 
 ## Deploy with Cloud Build
 
+
+Authenticate:
+```
+gcloud auth login
+```
+Set GCP project to the one you'd like to deploy into (if set to a different project):
+```
+gcloud config set project <PROJECT_ID>
+```
 From this directory:
 ```
 gcloud builds submit --config=cloudbuild.yaml
