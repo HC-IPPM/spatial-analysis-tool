@@ -262,7 +262,7 @@ def create_kmeans():
         n_clusters = max(2, min(10, int(n_clusters)))
 
         # Perform K-means clustering
-        from utils.spatial_analysis import perform_kmeans
+        from app.utils.spatial_analysis import perform_kmeans
         cluster_stats, points_data = perform_kmeans(app.current_points, n_clusters)
 
         if not cluster_stats:
