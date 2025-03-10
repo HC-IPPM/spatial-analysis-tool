@@ -7,7 +7,7 @@
 
 # ---- SET ENV VARIABLES - modify with your own in the README.md and run (or uncomment and change here)
 
-PROJECT_ID=phx-01hwmw2c1r4
+PROJECT_ID=phx-zacharynick
 PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format="value(projectNumber)")
 REPO_NAME=spatial-analysis-tool-repo
 REGION=northamerica-northeast1
